@@ -1,127 +1,124 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  AlertCircle, ExternalLink, HelpCircle, Lock, Zap, MonitorSmartphone,
-  Play, UploadCloud, Clock, User, BarChart3, Flame, CalendarDays,
-  Download, MousePointerClick, Sparkles, ShieldCheck,
+  AlertCircle,
+  Archive,
+  CheckCircle2,
+  Clock,
+  ExternalLink,
+  FileCode,
+  FileJson,
+  HelpCircle,
+  Play,
+  ShieldCheck,
+  UploadCloud,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
-  Dialog, DialogContent, DialogDescription,
-  DialogHeader, DialogTitle, DialogTrigger,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import { useHistoryStore } from "@/lib/store";
 import {
-  generateDemoData, HistoryParseError,
-  type HistoryParseErrorCode, parseHistoryFile,
+  generateDemoData,
+  HistoryParseError,
+  type HistoryParseErrorCode,
+  parseHistoryFile,
 } from "@/lib/parser";
 
-/* ─── copy ──────────────────────────────────────────────────────── */
 const copy = {
   "pt-BR": {
-    loading: "Analisando seu histórico…",
-    parseError: "Não consegui ler o arquivo. Envie um ZIP/TGZ do Google Takeout.",
+    loading: "Abrindo exportação e analisando seu histórico...",
+    parseError:
+      "Não consegui ler o arquivo. Envie um ZIP/TGZ do Google Takeout ou um histórico válido do YouTube.",
     errors: {
-      UNSUPPORTED_FORMAT: "Formato não suportado. Use .zip, .tgz, .json ou .html.",
-      ARCHIVE_TOO_LARGE: "Arquivo muito grande. Gere um Takeout só com YouTube.",
-      NO_HISTORY_FILE: "Histórico não encontrado. Selecione só YouTube no Takeout.",
-      NO_ENTRIES: "Arquivo sem vídeos assistidos. Verifique se o histórico estava ativo.",
+      UNSUPPORTED_FORMAT:
+        "Formato não suportado. Envie .zip, .tgz, .tar.gz, .json ou .html.",
+      ARCHIVE_TOO_LARGE:
+        "Esse arquivo está grande demais para abrir neste navegador. Gere outro Takeout marcando somente YouTube e YouTube Music.",
+      NO_HISTORY_FILE:
+        "Não encontrei o histórico do YouTube dentro desse arquivo. Gere outro Takeout selecionando YouTube e YouTube Music.",
+      NO_ENTRIES:
+        "Encontrei o arquivo, mas ele não parece ter vídeos assistidos. Confira se o histórico do YouTube estava ativado nessa conta.",
     },
-    badge: "100% no seu navegador • código aberto",
-    title1: "Entenda seu histórico",
-    title2: "do YouTube.",
-    sub: "Faça upload do export do Google Takeout e transforme anos de vídeos assistidos em insights visuais — canais favoritos, maratonas, padrões de consumo e muito mais.",
-    uploadLabel: "Arraste seu Takeout aqui",
-    uploadSub: "ou clique para escolher um arquivo",
-    formats: ".zip · .tgz · .json · .html",
-    drag: "Solte aqui!",
-    demo: "Ver demo sem arquivo",
-    guideBtn: "Como exportar?",
-    trust: [
-      { icon: Lock,              label: "100% privado" },
-      { icon: Zap,               label: "Instantâneo" },
-      { icon: MonitorSmartphone, label: "Sem instalação" },
-    ],
-    discoverTitle: "O que você vai descobrir",
-    discoverSub: "Cada export vira um painel completo sobre seus hábitos de consumo.",
-    discover: [
-      { icon: User,        title: "Sua personalidade", desc: "Coruja noturna? Maratonador? Descubra seu perfil de consumo." },
-      { icon: BarChart3,   title: "Canais favoritos",  desc: "Ranking dos criadores que mais dominaram o seu tempo." },
-      { icon: Flame,       title: "Sessões de binge",  desc: "As maiores maratonas que você fez sem nem perceber." },
-      { icon: CalendarDays,title: "Padrões de tempo",  desc: "Calendário de atividade, horários e dias mais ativos." },
-    ],
-    howTitle: "Como funciona",
-    how: [
-      { icon: Download,           title: "Exporte do Takeout", desc: "Baixe seu histórico do YouTube pelo Google Takeout." },
-      { icon: UploadCloud,        title: "Faça o upload",      desc: "Arraste o arquivo aqui. Ele nunca sai do seu navegador." },
-      { icon: Sparkles,           title: "Veja os insights",   desc: "Em segundos, seu painel completo está pronto." },
-    ],
-    privacyTitle: "Seus dados nunca saem do seu dispositivo",
-    privacySub: "Todo o processamento acontece localmente no seu navegador. Nada é enviado, armazenado ou compartilhado com servidores.",
+    title: "TubeTrace.",
+    intro:
+      "Envie o ZIP do Google Takeout para descobrir sua personalidade de consumo, maiores maratonas e canais mais vistos.",
+    privacy: "100% privado no upload manual. Tudo é processado no seu navegador.",
+    uploadIdle: "Toque para escolher o ZIP do Takeout",
+    uploadActive: "Solte a exportação aqui",
+    formats: "Aceita .zip, .tgz, .tar.gz, .json ou .html",
+    tryIt: "Ou teste sem arquivo",
+    demo: "Carregar dados demo",
+    howTitle: "Como pegar seus dados",
+    howSubtitle:
+      "Faça uma exportação menor e mais rápida: desmarque tudo e selecione somente YouTube e YouTube Music.",
+    guideCta: "Ver passo a passo",
     guideTitle: "Exportar histórico do YouTube",
-    guideDesc: "O Google pode demorar alguns minutos (ou horas) para gerar o arquivo.",
+    guideDescription:
+      "O Google pode levar minutos ou horas para preparar o arquivo, dependendo da quantidade de dados na sua conta.",
     steps: [
-      "Abra takeout.google.com com sua conta do YouTube.",
-      'Clique em "Desmarcar tudo".',
-      "Role até YouTube e YouTube Music e marque só esse produto.",
-      "Prefira o formato JSON quando disponível.",
-      "Clique em Próxima etapa → Criar exportação e aguarde o e-mail.",
-      "Baixe o .zip e arraste aqui. Não precisa extrair.",
+      "Abra o Google Takeout com a conta usada no YouTube.",
+      "Clique em Desmarcar tudo para evitar uma exportação gigante.",
+      "Role até YouTube e YouTube Music e marque somente esse produto.",
+      "Nas opções do produto, mantenha o histórico e prefira JSON quando o Google oferecer essa escolha.",
+      "Crie a exportação e aguarde o e-mail do Google. Pode demorar conforme o volume de dados.",
+      "Baixe o arquivo .zip, .tgz ou .tar.gz e envie direto aqui. Não precisa extrair manualmente.",
     ],
     openTakeout: "Abrir Google Takeout",
-    waitNote: "Exports grandes podem demorar para ficar prontos.",
+    safeNote:
+      "Depois de escolher o arquivo, ele não é enviado para servidor nenhum.",
+    language: "Idioma",
+    archiveBadge: "ZIP do Takeout agora funciona",
+    waitNote: "Exports grandes podem demorar para ficar prontos no Google.",
   },
   en: {
-    loading: "Analyzing your history…",
-    parseError: "Could not read the file. Upload a Google Takeout ZIP.",
+    loading: "Opening your export and crunching the numbers...",
+    parseError:
+      "Failed to parse file. Upload a Google Takeout ZIP/TGZ or a valid YouTube watch history file.",
     errors: {
-      UNSUPPORTED_FORMAT: "Unsupported format. Use .zip, .tgz, .json, or .html.",
-      ARCHIVE_TOO_LARGE: "File too large. Create a Takeout with only YouTube selected.",
-      NO_HISTORY_FILE: "YouTube history not found. Select only YouTube in Takeout.",
-      NO_ENTRIES: "No watched videos detected. Check if watch history was enabled.",
+      UNSUPPORTED_FORMAT:
+        "Unsupported format. Upload .zip, .tgz, .tar.gz, .json, or .html.",
+      ARCHIVE_TOO_LARGE:
+        "This file is too large to open in this browser. Create a new Takeout export with only YouTube and YouTube Music selected.",
+      NO_HISTORY_FILE:
+        "I could not find YouTube watch history inside this file. Create another Takeout export selecting YouTube and YouTube Music.",
+      NO_ENTRIES:
+        "I found the file, but it does not look like it contains watched videos. Check whether YouTube watch history was enabled for this account.",
     },
-    badge: "100% in your browser • open source",
-    title1: "Understand your",
-    title2: "YouTube history.",
-    sub: "Upload your Google Takeout export and turn years of watched videos into visual insights — top channels, binge sessions, viewing patterns and much more.",
-    uploadLabel: "Drop your Takeout here",
-    uploadSub: "or click to choose a file",
-    formats: ".zip · .tgz · .json · .html",
-    drag: "Drop it!",
-    demo: "View demo without a file",
-    guideBtn: "How to export?",
-    trust: [
-      { icon: Lock,              label: "100% private" },
-      { icon: Zap,               label: "Instant" },
-      { icon: MonitorSmartphone, label: "No install" },
-    ],
-    discoverTitle: "What you'll discover",
-    discoverSub: "Every export becomes a complete dashboard about your viewing habits.",
-    discover: [
-      { icon: User,        title: "Your personality", desc: "Night owl? Binge watcher? Find out your viewing profile." },
-      { icon: BarChart3,   title: "Top channels",     desc: "Ranking of the creators that dominated your time." },
-      { icon: Flame,       title: "Binge sessions",   desc: "The biggest marathons you did without even noticing." },
-      { icon: CalendarDays,title: "Time patterns",    desc: "Activity calendar, peak hours and most active days." },
-    ],
-    howTitle: "How it works",
-    how: [
-      { icon: Download,    title: "Export from Takeout", desc: "Download your YouTube history via Google Takeout." },
-      { icon: UploadCloud, title: "Upload it",           desc: "Drag the file here. It never leaves your browser." },
-      { icon: Sparkles,    title: "See the insights",    desc: "In seconds, your complete dashboard is ready." },
-    ],
-    privacyTitle: "Your data never leaves your device",
-    privacySub: "All processing happens locally in your browser. Nothing is sent, stored or shared with servers.",
+    title: "TubeTrace.",
+    intro:
+      "Upload your Google Takeout ZIP to see your viewing personality, top binges, and most watched channels.",
+    privacy: "100% private for manual uploads. Processed entirely in your browser.",
+    uploadIdle: "Tap to choose your Takeout ZIP",
+    uploadActive: "Drop your export here",
+    formats: "Supports .zip, .tgz, .tar.gz, .json, or .html",
+    tryIt: "Or try it without a file",
+    demo: "Load Demo Data",
+    howTitle: "How to get your data",
+    howSubtitle:
+      "Make the export smaller and faster: deselect everything, then select only YouTube and YouTube Music.",
+    guideCta: "View steps",
     guideTitle: "Export YouTube history",
-    guideDesc: "Google can take minutes or hours to prepare the file.",
+    guideDescription:
+      "Google can take minutes or hours to prepare the file depending on how much data your account has.",
     steps: [
-      "Open takeout.google.com with your YouTube account.",
-      'Click "Deselect all".',
-      "Scroll to YouTube and YouTube Music and select only that.",
-      "Choose JSON format when available.",
-      "Click Next step → Create export and wait for Google's email.",
-      "Download the .zip and drag it here. No extraction needed.",
+      "Open Google Takeout with the account you use for YouTube.",
+      "Click Deselect all to avoid a huge export.",
+      "Scroll to YouTube and YouTube Music and select only that product.",
+      "In product options, keep history included and choose JSON when Google offers that choice.",
+      "Create the export and wait for Google's email. Timing depends on your data volume.",
+      "Download the .zip, .tgz, or .tar.gz file and upload it here. No manual extraction needed.",
     ],
     openTakeout: "Open Google Takeout",
+    safeNote: "After you pick a file, it is not uploaded to any server.",
+    language: "Language",
+    archiveBadge: "Takeout ZIP now works",
     waitNote: "Large exports can take time before Google makes them available.",
   },
 } as const;
@@ -131,32 +128,46 @@ type Locale = keyof typeof copy;
 export function UploadSection() {
   const { setLoading, setData, setError, error, isLoading } = useHistoryStore();
   const [locale, setLocale] = useState<Locale>(() =>
-    navigator.language.toLowerCase().startsWith("pt") ? "pt-BR" : "en"
+    navigator.language.toLowerCase().startsWith("pt") ? "pt-BR" : "en",
   );
   const t = copy[locale];
 
-  useEffect(() => { document.documentElement.lang = locale; }, [locale]);
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
 
-  const onDrop = useCallback(async (files: File[]) => {
-    const file = files[0];
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
     if (!file) return;
+
     try {
       setLoading(true);
       setError(null);
-      await new Promise(r => setTimeout(r, 80));
-      setData(await parseHistoryFile(file));
+      await new Promise(r => setTimeout(r, 100));
+
+      const data = await parseHistoryFile(file);
+      setData(data);
     } catch (err) {
-      if (err instanceof HistoryParseError) setError(t.errors[err.code as HistoryParseErrorCode]);
-      else setError(t.parseError);
-    } finally { setLoading(false); }
+      console.error(err);
+      if (err instanceof HistoryParseError) {
+        setError(t.errors[err.code as HistoryParseErrorCode]);
+      } else {
+        setError(t.parseError);
+      }
+    } finally {
+      setLoading(false);
+    }
   }, [setData, setLoading, setError, t.errors, t.parseError]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      "application/json": [".json"], "text/html": [".html"],
-      "application/zip": [".zip"], "application/x-zip-compressed": [".zip"],
-      "application/gzip": [".tgz", ".tar.gz"], "application/x-gzip": [".tgz", ".tar.gz"],
+      "application/json": [".json"],
+      "text/html": [".html"],
+      "application/zip": [".zip"],
+      "application/x-zip-compressed": [".zip"],
+      "application/gzip": [".tgz", ".tar.gz"],
+      "application/x-gzip": [".tgz", ".tar.gz"],
       "application/octet-stream": [".tgz", ".tar.gz"],
     },
     multiple: false,
@@ -164,235 +175,198 @@ export function UploadSection() {
 
   const handleDemo = () => {
     setLoading(true);
-    setTimeout(() => { setData(generateDemoData()); setLoading(false); }, 400);
+    setTimeout(() => {
+      setData(generateDemoData());
+      setLoading(false);
+    }, 500);
   };
 
   if (isLoading) {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center gap-5">
+      <div className="min-h-[80vh] flex flex-col items-center justify-center space-y-6 px-6 text-center">
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
-          className="w-12 h-12 rounded-full border-[3px] border-primary/20 border-t-primary"
+          transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+          className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full"
         />
-        <p className="text-sm text-muted-foreground animate-pulse">{t.loading}</p>
+        <h2 className="text-xl font-medium tracking-tight animate-pulse text-muted-foreground">
+          {t.loading}
+        </h2>
       </div>
     );
   }
 
   return (
-    <div className="relative flex-1">
-
-      {/* ── nav ── */}
-      <nav className="relative z-20 flex items-center justify-between px-6 sm:px-8 py-5 max-w-6xl mx-auto w-full">
-        <span className="text-lg font-extrabold tracking-tight">
-          Tube<span className="text-primary">Trace</span>
-        </span>
-        <div className="flex items-center gap-0.5 rounded-full border border-border/60 bg-card/40 p-1 text-xs">
-          {(["pt-BR", "en"] as Locale[]).map(opt => (
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-6 md:p-6 max-w-4xl mx-auto w-full">
+      <div className="w-full flex justify-end mb-6">
+        <div className="inline-flex items-center gap-1 rounded-full border border-border bg-card/70 p-1 text-xs">
+          <span className="px-2 text-muted-foreground">{t.language}</span>
+          {(["pt-BR", "en"] as Locale[]).map((option) => (
             <button
-              key={opt}
-              onClick={() => setLocale(opt)}
-              className={`rounded-full px-3 py-1.5 font-bold transition-all ${
-                locale === opt ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+              key={option}
+              onClick={() => setLocale(option)}
+              className={`rounded-full px-3 py-1 font-semibold transition-colors ${
+                locale === option
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              {opt === "pt-BR" ? "PT" : "EN"}
+              {option === "pt-BR" ? "PT" : "EN"}
             </button>
           ))}
         </div>
-      </nav>
+      </div>
 
-      {/* ════ HERO ════ */}
-      <section className="relative overflow-hidden">
-        {/* glows */}
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-primary/10 blur-[130px]" />
-          <div className="absolute top-20 right-0 w-[400px] h-[400px] rounded-full bg-violet-600/8 blur-[110px]" />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-8 md:mb-12 space-y-4"
+      >
+        <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold text-primary">
+          <Archive className="w-4 h-4" />
+          {t.archiveBadge}
         </div>
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
+          {t.title}
+        </h1>
+        <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          {t.intro}
+          <span className="block mt-2 font-medium text-foreground">{t.privacy}</span>
+        </p>
+      </motion.div>
 
-        <div className="relative z-10 max-w-2xl mx-auto px-6 pt-12 pb-20 flex flex-col items-center text-center">
-          {/* badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary mb-7"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            {t.badge}
-          </motion.div>
+      {error && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="mb-8 bg-destructive/10 text-destructive px-6 py-4 rounded-xl flex items-center gap-3 w-full"
+        >
+          <AlertCircle className="w-5 h-5 shrink-0" />
+          <p>{error}</p>
+        </motion.div>
+      )}
 
-          {/* headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.05 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.08]"
-          >
-            <span className="text-foreground">{t.title1}</span>
-            <br />
-            <span className="bg-gradient-to-r from-primary to-rose-400 bg-clip-text text-transparent">{t.title2}</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}
-            className="text-muted-foreground text-base sm:text-lg leading-relaxed mt-5 max-w-xl"
-          >
-            {t.sub}
-          </motion.p>
-
-          {/* error */}
-          <AnimatePresence>
-            {error && (
-              <motion.div
-                initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                className="w-full max-w-md mt-7 flex items-start gap-2.5 rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive text-left"
-              >
-                <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
-                <p>{error}</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* upload card */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.15 }}
-            className="w-full max-w-md mt-9"
-          >
-            <div
-              {...getRootProps()}
-              className={`
-                relative cursor-pointer rounded-2xl border-2 border-dashed transition-all duration-200 select-none group
-                flex flex-col items-center gap-3 py-10 px-6
-                ${isDragActive
-                  ? "border-primary bg-primary/8 scale-[1.01]"
-                  : "border-border hover:border-primary/50 bg-card/50 hover:bg-card backdrop-blur-sm"
-                }
-              `}
-            >
-              <input {...getInputProps()} />
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
-                isDragActive ? "bg-primary text-white" : "bg-secondary text-muted-foreground group-hover:bg-primary/15 group-hover:text-primary"
-              }`}>
-                <UploadCloud className="w-6 h-6" />
-              </div>
-              <div>
-                <p className="font-semibold text-foreground">{isDragActive ? t.drag : t.uploadLabel}</p>
-                <p className="text-xs text-muted-foreground mt-0.5">{t.uploadSub}</p>
-              </div>
-              <p className="text-[11px] text-muted-foreground/40 font-mono mt-1">{t.formats}</p>
-            </div>
-
-            {/* actions */}
-            <div className="flex items-center justify-center gap-4 mt-5">
-              <button onClick={handleDemo} className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors">
-                <Play className="w-3.5 h-3.5 text-primary" />
-                {t.demo}
-              </button>
-              <span className="text-border">·</span>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <button className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    <HelpCircle className="w-3.5 h-3.5" />
-                    {t.guideBtn}
-                  </button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-xl max-h-[88vh] overflow-y-auto">
-                  <DialogHeader>
-                    <DialogTitle>{t.guideTitle}</DialogTitle>
-                    <DialogDescription>{t.guideDesc}</DialogDescription>
-                  </DialogHeader>
-                  <ol className="grid gap-3 mt-2">
-                    {t.steps.map((step, i) => (
-                      <li key={i} className="flex gap-3 items-start rounded-xl bg-secondary/50 px-4 py-3">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">{i + 1}</span>
-                        <span className="text-sm leading-relaxed">{step}</span>
-                      </li>
-                    ))}
-                  </ol>
-                  <div className="mt-3 flex items-start gap-3 rounded-xl border border-border bg-secondary/30 px-4 py-3">
-                    <Clock className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                    <p className="text-xs text-muted-foreground">{t.waitNote}</p>
-                  </div>
-                  <a href="https://takeout.google.com/" target="_blank" rel="noreferrer"
-                    className="mt-2 flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white w-full">
-                    {t.openTakeout}
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </DialogContent>
-              </Dialog>
-            </div>
-
-            {/* trust */}
-            <div className="flex items-center justify-center gap-5 mt-7">
-              {t.trust.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <Icon className="w-3.5 h-3.5 text-primary" />
-                  {label}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ════ DISCOVER ════ */}
-      <section className="relative max-w-6xl mx-auto px-6 sm:px-8 py-16 border-t border-border/40">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">{t.discoverTitle}</h2>
-          <p className="text-muted-foreground mt-2 max-w-md mx-auto">{t.discoverSub}</p>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {t.discover.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="rounded-2xl border border-border/60 bg-card/40 p-5 hover:border-primary/40 hover:bg-card/70 transition-colors">
-              <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center mb-4">
-                <Icon className="w-5 h-5 text-primary" />
-              </div>
-              <h3 className="font-bold text-foreground mb-1.5">{title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ════ HOW IT WORKS ════ */}
-      <section className="relative max-w-6xl mx-auto px-6 sm:px-8 py-16 border-t border-border/40">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">{t.howTitle}</h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {t.how.map(({ icon: Icon, title, desc }, i) => (
-            <div key={title} className="relative flex flex-col items-center text-center">
-              <div className="relative w-14 h-14 rounded-2xl bg-secondary border border-border flex items-center justify-center mb-4">
-                <Icon className="w-6 h-6 text-primary" />
-                <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">
-                  {i + 1}
-                </span>
-              </div>
-              <h3 className="font-bold text-foreground mb-1.5">{title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ════ PRIVACY BAND ════ */}
-      <section className="relative max-w-6xl mx-auto px-6 sm:px-8 pb-16">
-        <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-card to-secondary/40 p-8 sm:p-12 text-center">
-          <div aria-hidden className="pointer-events-none absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-primary/10 blur-3xl" />
-          <div className="relative z-10 flex flex-col items-center">
-            <div className="w-14 h-14 rounded-2xl bg-primary/15 flex items-center justify-center mb-5">
-              <ShieldCheck className="w-7 h-7 text-primary" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight max-w-lg">{t.privacyTitle}</h2>
-            <p className="text-muted-foreground mt-3 max-w-lg leading-relaxed">{t.privacySub}</p>
-            <button
-              onClick={handleDemo}
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white hover:bg-primary/90 transition-colors"
-            >
-              <MousePointerClick className="w-4 h-4" />
-              {t.demo}
-            </button>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.1 }}
+        className="w-full"
+      >
+        <div
+          {...getRootProps()}
+          className={`
+            border-3 border-dashed rounded-3xl p-6 md:p-12 text-center cursor-pointer transition-all duration-300
+            flex flex-col items-center justify-center gap-4 md:gap-6 min-h-[220px] md:min-h-[300px]
+            ${isDragActive
+              ? "border-primary bg-primary/5 scale-[1.02]"
+              : "border-muted-foreground/20 hover:border-primary/50 hover:bg-card/50"
+            }
+          `}
+        >
+          <input {...getInputProps()} />
+          <div className="p-5 md:p-6 bg-background rounded-full shadow-xl">
+            <UploadCloud className={`w-10 h-10 md:w-12 md:h-12 ${isDragActive ? "text-primary" : "text-muted-foreground"}`} />
+          </div>
+          <div>
+            <h3 className="text-xl md:text-2xl font-semibold mb-2">
+              {isDragActive ? t.uploadActive : t.uploadIdle}
+            </h3>
+            <p className="text-muted-foreground flex flex-wrap items-center justify-center gap-3 text-sm md:text-base">
+              <span className="flex items-center gap-1"><Archive className="w-4 h-4" /> .zip/.tgz</span>
+              <span className="flex items-center gap-1"><FileJson className="w-4 h-4" /> .json</span>
+              <span className="flex items-center gap-1"><FileCode className="w-4 h-4" /> .html</span>
+            </p>
+            <p className="mt-2 text-xs text-muted-foreground/70">{t.formats}</p>
           </div>
         </div>
-      </section>
+      </motion.div>
+
+      <motion.section
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="mt-8 w-full rounded-2xl border border-border/60 bg-card/60 p-5 md:p-6"
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h2 className="text-lg md:text-xl font-bold">{t.howTitle}</h2>
+            <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+              {t.howSubtitle}
+            </p>
+          </div>
+          <ShieldCheck className="w-6 h-6 text-primary shrink-0" />
+        </div>
+
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="secondary" className="min-h-11 rounded-full gap-2">
+                <HelpCircle className="w-4 h-4" />
+                {t.guideCta}
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-h-[88vh] overflow-y-auto sm:max-w-2xl">
+              <DialogHeader>
+                <DialogTitle>{t.guideTitle}</DialogTitle>
+                <DialogDescription>{t.guideDescription}</DialogDescription>
+              </DialogHeader>
+              <ol className="mt-2 grid gap-3">
+                {t.steps.map((step, index) => (
+                  <li key={step} className="flex gap-3 rounded-xl bg-muted/50 p-3">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                      {index + 1}
+                    </span>
+                    <span className="text-sm leading-relaxed text-foreground/90">{step}</span>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-4 rounded-xl border border-border bg-background/70 p-4">
+                <div className="flex items-start gap-3">
+                  <Clock className="mt-0.5 w-5 h-5 text-primary shrink-0" />
+                  <p className="text-sm text-muted-foreground">{t.waitNote}</p>
+                </div>
+              </div>
+              <a
+                href="https://takeout.google.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground"
+              >
+                {t.openTakeout}
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </DialogContent>
+          </Dialog>
+
+          <a
+            href="https://takeout.google.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-border bg-background px-5 text-sm font-semibold text-foreground hover:bg-muted"
+          >
+            {t.openTakeout}
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+
+        <div className="mt-5 flex items-start gap-3 rounded-xl bg-background/70 p-3">
+          <CheckCircle2 className="mt-0.5 w-5 h-5 text-primary shrink-0" />
+          <p className="text-xs leading-relaxed text-muted-foreground">{t.safeNote}</p>
+        </div>
+      </motion.section>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="mt-8 md:mt-12 flex flex-col items-center gap-4"
+      >
+        <p className="text-sm text-muted-foreground uppercase tracking-widest font-semibold">{t.tryIt}</p>
+        <Button onClick={handleDemo} variant="secondary" size="lg" className="rounded-full px-8 gap-2 font-semibold">
+          <Play className="w-4 h-4" />
+          {t.demo}
+        </Button>
+      </motion.div>
     </div>
   );
 }
