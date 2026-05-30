@@ -1,0 +1,17 @@
+<svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" rx="40" fill="#0F172A"/>
+
+  <!-- Bold play triangle — fills ~65% of width, slightly left-offset to leave room for trail -->
+  <path d="M46,42 L46,158 L150,100 Z" fill="#E84545"/>
+
+  <!-- Data trail — bezier curve from tip curling toward bottom-right -->
+  <path d="M150,100 C166,94 172,120 156,144"
+        stroke="#E84545" stroke-width="6" fill="none"
+        stroke-linecap="round" stroke-opacity="0.6"/>
+
+  <!-- Trail breadcrumb dots (data points / history trace) -->
+  <circle cx="157" cy="97"  r="6.5" fill="#FF7373"/>
+  <circle cx="169" cy="114" r="5"   fill="#FF7373" fill-opacity="0.80"/>
+  <circle cx="158" cy="138" r="3.8" fill="#FF7373" fill-opacity="0.55"/>
+</svg>

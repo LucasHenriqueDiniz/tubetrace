@@ -1,0 +1,18 @@
+<svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" rx="40" fill="#0F172A"/>
+
+  <!-- Archive stack — 3 horizontal data bars -->
+  <rect x="24" y="34"  width="152" height="28" rx="6" fill="#8B5CF6" fill-opacity="0.70"/>
+  <rect x="18" y="78"  width="164" height="28" rx="6" fill="#8B5CF6"/>
+  <rect x="24" y="122" width="152" height="28" rx="6" fill="#8B5CF6" fill-opacity="0.82"/>
+
+  <!-- Subtle highlight edge on each bar (adds depth) -->
+  <rect x="24" y="34"  width="152" height="4"  rx="3" fill="white" fill-opacity="0.12"/>
+  <rect x="18" y="78"  width="164" height="4"  rx="3" fill="white" fill-opacity="0.14"/>
+  <rect x="24" y="122" width="152" height="4"  rx="3" fill="white" fill-opacity="0.10"/>
+
+  <!-- White play triangle on the middle bar (local access / video) -->
+  <!-- centered at (100, 92), fits within bar y=78 to y=106 -->
+  <path d="M77,83 L77,107 L122,95 Z" fill="white"/>
+</svg>
