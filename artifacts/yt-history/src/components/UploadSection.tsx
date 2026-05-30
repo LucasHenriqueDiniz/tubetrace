@@ -46,9 +46,9 @@ const copy = {
       NO_ENTRIES:
         "Encontrei o arquivo, mas ele não parece ter vídeos assistidos. Confira se o histórico do YouTube estava ativado nessa conta.",
     },
-    title: "YouTube Unwrapped.",
+    title: "TubeTrace.",
     intro:
-      "Envie o ZIP do Google Takeout ou o arquivo watch-history para descobrir sua personalidade de consumo, maiores maratonas e canais mais vistos.",
+      "Envie o ZIP do Google Takeout para descobrir sua personalidade de consumo, maiores maratonas e canais mais vistos.",
     privacy: "100% privado no upload manual. Tudo é processado no seu navegador.",
     uploadIdle: "Toque para escolher o ZIP do Takeout",
     uploadActive: "Solte a exportação aqui",
@@ -91,9 +91,9 @@ const copy = {
       NO_ENTRIES:
         "I found the file, but it does not look like it contains watched videos. Check whether YouTube watch history was enabled for this account.",
     },
-    title: "YouTube Unwrapped.",
+    title: "TubeTrace.",
     intro:
-      "Upload your Google Takeout ZIP or watch-history file to see your viewing personality, top binges, and most watched channels.",
+      "Upload your Google Takeout ZIP to see your viewing personality, top binges, and most watched channels.",
     privacy: "100% private for manual uploads. Processed entirely in your browser.",
     uploadIdle: "Tap to choose your Takeout ZIP",
     uploadActive: "Drop your export here",
