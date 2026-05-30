@@ -3,17 +3,155 @@ import {
   differenceInMinutes, differenceInDays, parseISO,
   getHours, getDay, format, startOfMonth, startOfYear, addDays
 } from "date-fns";
+import { gunzipSync, unzipSync } from "fflate";
+
+export type HistoryParseErrorCode =
+  | "UNSUPPORTED_FORMAT"
+  | "ARCHIVE_TOO_LARGE"
+  | "NO_HISTORY_FILE"
+  | "NO_ENTRIES";
+
+export class HistoryParseError extends Error {
+  constructor(public code: HistoryParseErrorCode) {
+    super(code);
+    this.name = "HistoryParseError";
+  }
+}
 
 const ptMonths: Record<string, number> = {
   "jan": 0, "fev": 1, "mar": 2, "abr": 3, "mai": 4, "jun": 5,
   "jul": 6, "ago": 7, "set": 8, "out": 9, "nov": 10, "dez": 11
 };
 
+const MAX_ARCHIVE_BYTES = 300 * 1024 * 1024;
+const textDecoder = new TextDecoder("utf-8");
+
 export async function parseHistoryFile(file: File): Promise<AnalyticsData> {
-  const text = await file.text();
+  const historyFile = await resolveHistoryFile(file);
+  const entries = parseHistoryText(historyFile.name, historyFile.text);
+
+  if (entries.length === 0) {
+    throw new HistoryParseError("NO_ENTRIES");
+  }
+
+  entries.sort((a, b) => a.date.getTime() - b.date.getTime());
+  return computeAnalytics(entries);
+}
+
+async function resolveHistoryFile(file: File): Promise<{ name: string; text: string }> {
+  const name = file.name.toLowerCase();
+
+  if (name.endsWith(".json") || name.endsWith(".html")) {
+    return { name: file.name, text: await file.text() };
+  }
+
+  if (file.size > MAX_ARCHIVE_BYTES) {
+    throw new HistoryParseError("ARCHIVE_TOO_LARGE");
+  }
+
+  if (name.endsWith(".zip")) {
+    const files = unzipSync(new Uint8Array(await file.arrayBuffer()));
+    const candidates = Object.entries(files).map(([path, bytes]) => ({ path, bytes }));
+    return pickHistoryFile(candidates);
+  }
+
+  if (name.endsWith(".tgz") || name.endsWith(".tar.gz")) {
+    const ungzipped = gunzipSync(new Uint8Array(await file.arrayBuffer()));
+    return pickHistoryFile(readTarEntries(ungzipped));
+  }
+
+  throw new HistoryParseError("UNSUPPORTED_FORMAT");
+}
+
+function pickHistoryFile(
+  candidates: { path: string; bytes: Uint8Array }[],
+): { name: string; text: string } {
+  const scored = candidates
+    .filter(({ path, bytes }) => isTextHistoryCandidate(path) && bytes.length > 0)
+    .map(({ path, bytes }) => {
+      const preview = textDecoder.decode(bytes.slice(0, 32768)).toLowerCase();
+      return {
+        path,
+        bytes,
+        score: scoreHistoryCandidate(path, preview),
+      };
+    })
+    .filter(candidate => candidate.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  const best = scored[0];
+  if (!best) {
+    throw new HistoryParseError("NO_HISTORY_FILE");
+  }
+
+  return {
+    name: best.path,
+    text: textDecoder.decode(best.bytes),
+  };
+}
+
+function isTextHistoryCandidate(path: string): boolean {
+  const lower = path.toLowerCase();
+  return lower.endsWith(".json") || lower.endsWith(".html");
+}
+
+function scoreHistoryCandidate(path: string, preview: string): number {
+  const lower = path.toLowerCase().replace(/\\/g, "/");
+  const fileName = lower.split("/").pop() || lower;
+  let score = 0;
+
+  if (fileName === "watch-history.json") score += 120;
+  if (fileName === "watch-history.html") score += 110;
+  if (fileName === "myactivity.json") score += 80;
+  if (lower.includes("youtube")) score += 30;
+  if (lower.includes("history") || lower.includes("hist")) score += 20;
+  if (lower.includes("takeout")) score += 10;
+  if (preview.includes("youtube watch history")) score += 80;
+  if (preview.includes("watched ") || preview.includes("content-cell")) score += 40;
+
+  return score;
+}
+
+function readTarEntries(bytes: Uint8Array): { path: string; bytes: Uint8Array }[] {
+  const entries: { path: string; bytes: Uint8Array }[] = [];
+  let offset = 0;
+
+  while (offset + 512 <= bytes.length) {
+    const header = bytes.slice(offset, offset + 512);
+    const isEmpty = header.every(byte => byte === 0);
+    if (isEmpty) break;
+
+    const path = readTarString(header, 0, 100);
+    const prefix = readTarString(header, 345, 155);
+    const fullPath = prefix ? `${prefix}/${path}` : path;
+    const sizeText = readTarString(header, 124, 12).trim();
+    const size = parseInt(sizeText || "0", 8);
+    const typeFlag = String.fromCharCode(header[156] || 0);
+    const dataStart = offset + 512;
+
+    if (fullPath && typeFlag !== "5" && size > 0) {
+      entries.push({
+        path: fullPath,
+        bytes: bytes.slice(dataStart, dataStart + size),
+      });
+    }
+
+    offset = dataStart + Math.ceil(size / 512) * 512;
+  }
+
+  return entries;
+}
+
+function readTarString(bytes: Uint8Array, start: number, length: number): string {
+  const slice = bytes.slice(start, start + length);
+  const end = slice.indexOf(0);
+  return textDecoder.decode(end >= 0 ? slice.slice(0, end) : slice).trim();
+}
+
+function parseHistoryText(name: string, text: string): WatchEntry[] {
   let entries: WatchEntry[] = [];
 
-  if (file.name.endsWith(".json")) {
+  if (name.toLowerCase().endsWith(".json")) {
     const data = JSON.parse(text);
     entries = data
       .filter((item: any) =>
@@ -28,7 +166,7 @@ export async function parseHistoryFile(file: File): Promise<AnalyticsData> {
         timestamp: item.time,
         date: parseISO(item.time),
       }));
-  } else if (file.name.endsWith(".html")) {
+  } else if (name.toLowerCase().endsWith(".html")) {
     const parser = new DOMParser();
     const doc = parser.parseFromString(text, "text/html");
     const cells = doc.querySelectorAll(".content-cell");
@@ -74,8 +212,7 @@ export async function parseHistoryFile(file: File): Promise<AnalyticsData> {
     });
   }
 
-  entries.sort((a, b) => a.date.getTime() - b.date.getTime());
-  return computeAnalytics(entries);
+  return entries;
 }
 
 export function generateDemoData(): AnalyticsData {
