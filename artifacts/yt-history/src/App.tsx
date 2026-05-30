@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useHistoryStore } from "@/lib/store";
 import { UploadSection } from "@/components/UploadSection";
 import { Dashboard } from "@/components/Dashboard";
+import { Footer } from "@/components/Footer";
 
 const queryClient = new QueryClient();
 
@@ -16,8 +17,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="min-h-screen bg-background text-foreground">
+        <div className="min-h-screen bg-background text-foreground flex flex-col">
           <AppContent />
+          <Footer />
         </div>
         <Toaster />
       </TooltipProvider>
