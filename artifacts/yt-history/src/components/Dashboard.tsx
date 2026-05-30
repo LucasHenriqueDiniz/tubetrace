@@ -17,25 +17,32 @@ export function Dashboard() {
 
   const container = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.07 } }
+    show: { opacity: 1, transition: { staggerChildren: 0.07 } },
   };
 
   return (
     <div className="min-h-screen bg-background">
+      {/* ── Sticky header ── */}
       <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <h1 className="text-lg font-bold tracking-tight">
-            <span className="text-primary">YouTube</span> Unwrapped
-          </h1>
-          <Button variant="outline" size="sm" className="gap-2 text-xs" onClick={reset} data-testid="button-reset">
+          <span className="text-base font-extrabold tracking-tight">
+            Tube<span className="text-primary">Trace</span>
+          </span>
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-2 text-xs rounded-full"
+            onClick={reset}
+          >
             <UploadCloud className="w-3.5 h-3.5" />
             Novo arquivo
           </Button>
         </div>
       </header>
 
+      {/* ── Main content ── */}
       <motion.main
-        className="max-w-6xl mx-auto px-4 py-8 space-y-10"
+        className="max-w-6xl mx-auto px-4 py-10 space-y-14"
         variants={container}
         initial="hidden"
         animate="show"
@@ -49,10 +56,6 @@ export function Dashboard() {
         <BingeSessions />
         <FunInsights />
       </motion.main>
-
-      <footer className="mt-16 border-t border-border/50 py-6 text-center text-xs text-muted-foreground">
-        Todos os dados são processados localmente no seu navegador. Nada é enviado a nenhum servidor.
-      </footer>
     </div>
   );
 }
