@@ -41,7 +41,7 @@ Suggested Cloudflare Pages settings:
 
 - Framework preset: Vite
 - Build command: `pnpm --filter @workspace/yt-history run build`
-- Build output directory: `artifacts/yt-history/dist`
+- Build output directory: `artifacts/yt-history/dist/public`
 - Root directory: repository root
 
 ## Repository Details
