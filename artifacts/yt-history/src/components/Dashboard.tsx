@@ -11,28 +11,35 @@ import { DataTimeline } from "./DataTimeline";
 import { Button } from "@/components/ui/button";
 import { UploadCloud } from "lucide-react";
 
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.06 } },
+};
+
 export function Dashboard() {
   const { data, reset } = useHistoryStore();
   if (!data) return null;
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.07 } },
-  };
-
   return (
     <div className="min-h-screen bg-background">
-      {/* ── Sticky header ── */}
-      <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <span className="text-base font-extrabold tracking-tight">
+
+      {/* ── sticky header ── */}
+      <header className="sticky top-0 z-50 border-b border-border/40 bg-background/75 backdrop-blur-xl">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+          <span className="text-base font-extrabold tracking-tight shrink-0">
             Tube<span className="text-primary">Trace</span>
           </span>
+
+          {/* data range pill */}
+          <span className="hidden sm:block text-xs text-muted-foreground bg-secondary/60 px-3 py-1 rounded-full font-medium truncate max-w-xs">
+            {data.totalVideos.toLocaleString("pt-BR")} vídeos · {data.uniqueChannels.toLocaleString("pt-BR")} canais
+          </span>
+
           <Button
             variant="outline"
             size="sm"
-            className="gap-2 text-xs rounded-full"
             onClick={reset}
+            className="gap-2 text-xs rounded-full shrink-0"
           >
             <UploadCloud className="w-3.5 h-3.5" />
             Novo arquivo
@@ -40,12 +47,12 @@ export function Dashboard() {
         </div>
       </header>
 
-      {/* ── Main content ── */}
+      {/* ── content ── */}
       <motion.main
-        className="max-w-6xl mx-auto px-4 py-10 space-y-14"
         variants={container}
         initial="hidden"
         animate="show"
+        className="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-16"
       >
         <PersonalityCard />
         <StatsCards />
