@@ -11,6 +11,21 @@ const COLORS = [
   "hsl(142,71%,45%)",
 ];
 
+// deterministic avatar color from the channel name
+const AVATAR_COLORS = [
+  "#e84545", "#a855f7", "#06b6d4", "#f59e0b", "#22c55e",
+  "#ec4899", "#3b82f6", "#f97316", "#14b8a6", "#8b5cf6",
+];
+function avatarColor(name: string) {
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+  return AVATAR_COLORS[h % AVATAR_COLORS.length];
+}
+function initials(name: string) {
+  const parts = name.trim().split(/\s+/).slice(0, 2);
+  return parts.map(p => p[0]?.toUpperCase() ?? "").join("") || "?";
+}
+
 const tooltipStyle = {
   contentStyle: {
     background: "hsl(240,10%,6%)",
@@ -28,6 +43,8 @@ export function TopChannels() {
   const top10 = data.topChannels.slice(0, 10);
   const top5  = data.topChannels.slice(0, 5);
   const maxCount = top10[0]?.count ?? 1;
+
+  if (top10.length === 0) return null;
 
   return (
     <section>
@@ -50,14 +67,24 @@ export function TopChannels() {
             {top10.map((ch, i) => (
               <div key={ch.channel} className="flex items-center gap-3 group">
                 <span
-                  className="text-xs font-bold tabular-nums w-5 text-right shrink-0"
+                  className="text-xs font-bold tabular-nums w-4 text-right shrink-0"
                   style={{ color: i < 3 ? COLORS[i] : undefined }}
                 >
                   {i + 1}
                 </span>
+
+                {/* avatar */}
+                <div
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white"
+                  style={{ backgroundColor: avatarColor(ch.channel) }}
+                  aria-hidden
+                >
+                  {initials(ch.channel)}
+                </div>
+
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-sm font-semibold truncate pr-2 group-hover:text-foreground transition-colors text-foreground/85">
+                    <span className="text-sm font-semibold truncate pr-2 text-foreground/90">
                       {ch.channel}
                     </span>
                     <span className="text-xs text-muted-foreground shrink-0 tabular-nums">
@@ -83,12 +110,13 @@ export function TopChannels() {
         {/* ── Gráfico top 5 ── */}
         <motion.div
           variants={{ hidden: { opacity: 0, x: 20 }, show: { opacity: 1, x: 0 } }}
-          className="md:col-span-2 bg-card border border-border/60 rounded-2xl p-6 flex flex-col"
+          className="md:col-span-2 bg-card border border-border/60 rounded-2xl p-6"
         >
           <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-5">
             Top 5 — gráfico
           </p>
-          <div className="flex-1 min-h-[240px]">
+          {/* fixed height via inline style (arbitrary tailwind heights are not in the safelist) */}
+          <div style={{ height: 240, width: "100%" }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={top5} layout="vertical" margin={{ left: 0, right: 24, top: 0, bottom: 0 }}>
                 <XAxis type="number" hide />

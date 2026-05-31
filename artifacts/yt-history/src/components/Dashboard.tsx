@@ -9,7 +9,9 @@ import { FunInsights } from "./FunInsights";
 import { ActivityHeatmap } from "./ActivityHeatmap";
 import { DataTimeline } from "./DataTimeline";
 import { Button } from "@/components/ui/button";
-import { UploadCloud } from "lucide-react";
+import { UploadCloud, Share2 } from "lucide-react";
+import { useState } from "react";
+import { shareCard } from "@/lib/shareCard";
 
 const container = {
   hidden: { opacity: 0 },
@@ -18,7 +20,17 @@ const container = {
 
 export function Dashboard() {
   const { data, reset } = useHistoryStore();
+  const [sharing, setSharing] = useState(false);
   if (!data) return null;
+
+  const handleShare = async () => {
+    setSharing(true);
+    try {
+      await shareCard(data);
+    } finally {
+      setSharing(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -35,15 +47,26 @@ export function Dashboard() {
             {data.totalVideos.toLocaleString("pt-BR")} vídeos · {data.uniqueChannels.toLocaleString("pt-BR")} canais
           </span>
 
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={reset}
-            className="gap-2 text-xs rounded-full shrink-0"
-          >
-            <UploadCloud className="w-3.5 h-3.5" />
-            Novo arquivo
-          </Button>
+          <div className="flex items-center gap-2 shrink-0">
+            <Button
+              size="sm"
+              onClick={handleShare}
+              disabled={sharing}
+              className="gap-2 text-xs rounded-full"
+            >
+              <Share2 className="w-3.5 h-3.5" />
+              {sharing ? "Gerando…" : "Compartilhar"}
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={reset}
+              className="gap-2 text-xs rounded-full"
+            >
+              <UploadCloud className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Novo arquivo</span>
+            </Button>
+          </div>
         </div>
       </header>
 

@@ -393,6 +393,7 @@ function computeAnalytics(entries: WatchEntry[]): AnalyticsData {
   }
 
   const topChannels = Array.from(channelCounts.entries())
+    .filter(([channel]) => channel && channel !== "Unknown Channel")
     .map(([channel, count]) => ({ channel, count, percentage: (count / total) * 100 }))
     .sort((a, b) => b.count - a.count);
 
