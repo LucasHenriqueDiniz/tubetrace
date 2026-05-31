@@ -9,25 +9,22 @@ interface HeaderProps {
 
 export function Header({ locale, onLocaleChange }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-xl">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+      <div className="max-w-4xl mx-auto px-4 md:p-6 h-16 flex items-center justify-between">
 
         {/* logo */}
-        <a href="/" className="flex items-center gap-2.5 group">
-          <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-primary shadow-lg shadow-primary/25">
-            {/* play triangle */}
+        <a href="/" className="flex items-center gap-2">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary shadow-lg">
             <svg viewBox="0 0 24 24" className="w-4 h-4 text-white" fill="currentColor">
               <path d="M8 5v14l11-7z" />
             </svg>
-            {/* pulse dot */}
-            <span className="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full bg-white ring-2 ring-primary" />
           </span>
           <span className="text-lg font-extrabold tracking-tight">
             Tube<span className="text-primary">Trace</span>
           </span>
         </a>
 
-        {/* right side */}
+        {/* right */}
         <div className="flex items-center gap-3">
           <a
             href="https://github.com/LucasHenriqueDiniz/tubetrace"
@@ -36,16 +33,15 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
             aria-label="GitHub"
             className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
           >
-            <Github className="w-[18px] h-[18px]" />
+            <Github className="w-4 h-4" />
           </a>
 
-          {/* language toggle */}
-          <div className="flex items-center gap-0.5 rounded-full border border-border/60 bg-card/50 p-1 text-xs">
+          <div className="flex items-center gap-1 rounded-full border border-border/60 bg-card/60 p-1 text-xs">
             {(["pt-BR", "en"] as Locale[]).map((opt) => (
               <button
                 key={opt}
                 onClick={() => onLocaleChange(opt)}
-                className={`rounded-full px-2.5 py-1 font-bold transition-all ${
+                className={`rounded-full px-3 py-1 font-bold transition-colors ${
                   locale === opt
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
