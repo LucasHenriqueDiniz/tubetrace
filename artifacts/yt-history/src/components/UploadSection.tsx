@@ -23,6 +23,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Header } from "@/components/Header";
 import { useHistoryStore } from "@/lib/store";
 import {
   generateDemoData,
@@ -197,41 +198,48 @@ export function UploadSection() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-6 md:p-6 max-w-4xl mx-auto w-full">
-      <div className="w-full flex justify-end mb-6">
-        <div className="inline-flex items-center gap-1 rounded-full border border-border bg-card/70 p-1 text-xs">
-          <span className="px-2 text-muted-foreground">{t.language}</span>
-          {(["pt-BR", "en"] as Locale[]).map((option) => (
-            <button
-              key={option}
-              onClick={() => setLocale(option)}
-              className={`rounded-full px-3 py-1 font-semibold transition-colors ${
-                locale === option
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {option === "pt-BR" ? "PT" : "EN"}
-            </button>
-          ))}
-        </div>
-      </div>
+    <div className="relative flex flex-col flex-1">
+      {/* header */}
+      <Header locale={locale} onLocaleChange={setLocale} />
+
+      {/* ambient glow behind hero */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[820px] h-[460px] rounded-full bg-primary/10 blur-[130px]"
+      />
+
+      <div className="relative z-10 flex flex-col items-center px-4 py-10 md:py-16 max-w-3xl mx-auto w-full">
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-8 md:mb-12 space-y-4"
+        className="text-center mb-10 md:mb-12 flex flex-col items-center"
       >
-        <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold text-primary">
-          <Archive className="w-4 h-4" />
+        {/* logo mark */}
+        <div className="relative mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary shadow-xl shadow-primary/25">
+          <svg viewBox="0 0 24 24" className="w-8 h-8 text-white" fill="currentColor">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-white ring-[3px] ring-primary" />
+        </div>
+
+        {/* badge */}
+        <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary mb-6">
+          <Archive className="w-3.5 h-3.5" />
           {t.archiveBadge}
         </div>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
-          {t.title}
+
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
+          <span className="bg-gradient-to-br from-foreground via-foreground to-primary bg-clip-text text-transparent">
+            {t.title}
+          </span>
         </h1>
-        <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+        <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed mt-5">
           {t.intro}
-          <span className="block mt-2 font-medium text-foreground">{t.privacy}</span>
+        </p>
+        <p className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-foreground">
+          <ShieldCheck className="w-4 h-4 text-primary" />
+          {t.privacy}
         </p>
       </motion.div>
 
@@ -367,6 +375,7 @@ export function UploadSection() {
           {t.demo}
         </Button>
       </motion.div>
+      </div>
     </div>
   );
 }
