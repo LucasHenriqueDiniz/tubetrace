@@ -14,11 +14,7 @@ export function Header({ locale, onLocaleChange }: HeaderProps) {
 
         {/* logo */}
         <a href="/" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary shadow-lg">
-            <svg viewBox="0 0 24 24" className="w-4 h-4 text-white" fill="currentColor">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </span>
+          <img src="/favicon.svg" alt="TubeTrace" className="h-9 w-9 rounded-xl" />
           <span className="text-lg font-extrabold tracking-tight">
             Tube<span className="text-primary">Trace</span>
           </span>

@@ -210,11 +210,7 @@ export function UploadSection() {
         className="text-center mb-8 md:mb-12 flex flex-col items-center"
       >
         {/* logo mark */}
-        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary shadow-xl">
-          <svg viewBox="0 0 24 24" className="w-8 h-8 text-white" fill="currentColor">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
+        <img src="/favicon.svg" alt="TubeTrace" className="mb-6 h-16 w-16 rounded-2xl shadow-xl" />
 
         {/* badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-semibold text-primary mb-6">
