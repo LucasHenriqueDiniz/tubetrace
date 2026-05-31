@@ -172,18 +172,34 @@ function parseHistoryText(name: string, text: string): WatchEntry[] {
     const cells = doc.querySelectorAll(".content-cell");
 
     cells.forEach(cell => {
-      const links = cell.querySelectorAll("a");
-      const titleLink = Array.from(links).find(a => a.textContent?.startsWith("Watched "));
+      // The watch-history HTML puts "Watched " as a text node BEFORE the links.
+      // The first <a> is the video title, the second <a> is the channel.
+      const cellText = cell.textContent?.trim() || "";
+      // \s matches normal space and &nbsp; in JS
+      if (!/^Watched\s/.test(cellText)) return;
 
-      if (titleLink) {
-        const title = titleLink.textContent?.replace("Watched ", "") || "Unknown Video";
-        const channelLink = Array.from(links).find(a => a !== titleLink);
-        const channelName = channelLink?.textContent || "Unknown Channel";
+      const links = Array.from(cell.querySelectorAll("a"));
+      const videoLink =
+        links.find(a => a.getAttribute("href")?.includes("watch?v=")) || links[0];
+      const channelLink =
+        links.find(a => {
+          const h = a.getAttribute("href") || "";
+          return h.includes("/channel/") || h.includes("/@") || h.includes("/user/");
+        }) || links.find(a => a !== videoLink);
 
+      {
+        const title =
+          videoLink?.textContent?.trim() ||
+          cellText.replace(/^Watched\s+/, "").trim() ||
+          "Unknown Video";
+        const channelName = channelLink?.textContent?.trim() || "Unknown Channel";
+
+        // Date is the text node that contains a 4-digit year.
         let dateStr = "";
         cell.childNodes.forEach(node => {
-          if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) {
-            dateStr = node.textContent.trim();
+          if (node.nodeType === Node.TEXT_NODE) {
+            const tc = node.textContent?.trim() || "";
+            if (/\d{4}/.test(tc)) dateStr = tc;
           }
         });
 
