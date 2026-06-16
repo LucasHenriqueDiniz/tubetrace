@@ -1,12 +1,14 @@
-export type Locale = "en" | "pt" | "es" | "fr";
+export type Locale = "en" | "pt" | "es" | "fr" | "de" | "it";
 
-export const SUPPORTED_LOCALES: Locale[] = ["en", "pt", "es", "fr"];
+export const SUPPORTED_LOCALES: Locale[] = ["en", "pt", "es", "fr", "de", "it"];
 
 export const LOCALE_LABELS: Record<Locale, string> = {
   en: "EN",
   pt: "PT",
   es: "ES",
   fr: "FR",
+  de: "DE",
+  it: "IT",
 };
 
 export const LOCALE_NAMES: Record<Locale, string> = {
@@ -14,6 +16,8 @@ export const LOCALE_NAMES: Record<Locale, string> = {
   pt: "Português",
   es: "Español",
   fr: "Français",
+  de: "Deutsch",
+  it: "Italiano",
 };
 
 /** Guide slugs — the URL path segment, always in English */

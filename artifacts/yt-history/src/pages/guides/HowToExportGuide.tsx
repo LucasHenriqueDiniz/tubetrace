@@ -11,6 +11,8 @@ const contentMap = {
   pt: async () => (await import("@/i18n/content/how-to-export.pt")).howToExportPt,
   es: async () => (await import("@/i18n/content/how-to-export.es")).howToExportEs,
   fr: async () => (await import("@/i18n/content/how-to-export.fr")).howToExportFr,
+  de: async () => (await import("@/i18n/content/how-to-export.de")).howToExportDe,
+  it: async () => (await import("@/i18n/content/how-to-export.it")).howToExportIt,
 };
 
 import { useState, useEffect } from "react";

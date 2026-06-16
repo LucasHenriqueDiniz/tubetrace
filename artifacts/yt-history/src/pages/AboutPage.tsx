@@ -12,6 +12,8 @@ const loaders: Record<Locale, () => Promise<AboutContent>> = {
   pt: async () => (await import("@/i18n/content/about.pt")).aboutPt,
   es: async () => (await import("@/i18n/content/about.es")).aboutEs,
   fr: async () => (await import("@/i18n/content/about.fr")).aboutFr,
+  de: async () => (await import("@/i18n/content/about.de")).aboutDe,
+  it: async () => (await import("@/i18n/content/about.it")).aboutIt,
 };
 
 const featureIcons = [Lock, Zap, Globe, ShieldCheck];

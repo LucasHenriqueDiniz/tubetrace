@@ -12,6 +12,8 @@ const loaders: Record<Locale, () => Promise<YoutubePrivacyContent>> = {
   pt: async () => (await import("@/i18n/content/history-private.pt")).youtubePrivacyPt,
   es: async () => (await import("@/i18n/content/history-private.es")).youtubePrivacyEs,
   fr: async () => (await import("@/i18n/content/history-private.fr")).youtubePrivacyFr,
+  de: async () => (await import("@/i18n/content/history-private.de")).youtubePrivacyDe,
+  it: async () => (await import("@/i18n/content/history-private.it")).youtubePrivacyIt,
 };
 
 interface Props { locale?: Locale }

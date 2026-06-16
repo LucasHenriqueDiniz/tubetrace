@@ -12,6 +12,8 @@ const loaders: Record<Locale, () => Promise<GoogleTakeoutContent>> = {
   pt: async () => (await import("@/i18n/content/google-takeout.pt")).googleTakeoutPt,
   es: async () => (await import("@/i18n/content/google-takeout.es")).googleTakeoutEs,
   fr: async () => (await import("@/i18n/content/google-takeout.fr")).googleTakeoutFr,
+  de: async () => (await import("@/i18n/content/google-takeout.de")).googleTakeoutDe,
+  it: async () => (await import("@/i18n/content/google-takeout.it")).googleTakeoutIt,
 };
 
 interface Props { locale?: Locale }

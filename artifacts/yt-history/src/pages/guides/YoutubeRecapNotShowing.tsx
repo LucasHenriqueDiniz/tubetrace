@@ -12,6 +12,8 @@ const loaders: Record<Locale, () => Promise<YoutubeRecapContent>> = {
   pt: async () => (await import("@/i18n/content/recap-not-showing.pt")).youtubeRecapPt,
   es: async () => (await import("@/i18n/content/recap-not-showing.es")).youtubeRecapEs,
   fr: async () => (await import("@/i18n/content/recap-not-showing.fr")).youtubeRecapFr,
+  de: async () => (await import("@/i18n/content/recap-not-showing.de")).youtubeRecapDe,
+  it: async () => (await import("@/i18n/content/recap-not-showing.it")).youtubeRecapIt,
 };
 
 interface Props { locale?: Locale }

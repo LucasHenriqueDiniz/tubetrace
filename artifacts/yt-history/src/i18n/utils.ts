@@ -19,7 +19,7 @@ export function getLocaleFromPath(path: string): Locale {
  * localePath("en", "/pt/guide/foo") → "/guide/foo"
  */
 export function localePath(locale: Locale, path: string): string {
-  const stripped = path.replace(/^\/(en|pt|es|fr)(\/|$)/, "/");
+  const stripped = path.replace(/^\/(en|pt|es|fr|de|it)(\/|$)/, "/");
   if (locale === "en") return stripped;
   return `/${locale}${stripped}`;
 }
@@ -29,5 +29,5 @@ export function localePath(locale: Locale, path: string): string {
  * /pt/guide/foo → /guide/foo
  */
 export function stripLocale(path: string): string {
-  return path.replace(/^\/(en|pt|es|fr)(\/|$)/, "/");
+  return path.replace(/^\/(en|pt|es|fr|de|it)(\/|$)/, "/");
 }

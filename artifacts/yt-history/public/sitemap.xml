@@ -12,8 +12,12 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://tubetrace.pages.dev/pt/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tubetrace.pages.dev/es/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tubetrace.pages.dev/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tubetrace.pages.dev/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://tubetrace.pages.dev/it/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tubetrace.pages.dev/"/>
   </url>
+  <url><loc>https://tubetrace.pages.dev/de/</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://tubetrace.pages.dev/it/</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
 
   <!-- ── Sample Report ── -->
   <url>
@@ -25,11 +29,15 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://tubetrace.pages.dev/pt/sample"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tubetrace.pages.dev/es/sample"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tubetrace.pages.dev/fr/sample"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tubetrace.pages.dev/de/sample"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://tubetrace.pages.dev/it/sample"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tubetrace.pages.dev/sample"/>
   </url>
   <url><loc>https://tubetrace.pages.dev/pt/sample</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://tubetrace.pages.dev/es/sample</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://tubetrace.pages.dev/fr/sample</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tubetrace.pages.dev/de/sample</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://tubetrace.pages.dev/it/sample</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
   <!-- ── FAQ ── -->
   <url>
@@ -41,11 +49,15 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://tubetrace.pages.dev/pt/faq"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tubetrace.pages.dev/es/faq"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tubetrace.pages.dev/fr/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tubetrace.pages.dev/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://tubetrace.pages.dev/it/faq"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tubetrace.pages.dev/faq"/>
   </url>
   <url><loc>https://tubetrace.pages.dev/pt/faq</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/es/faq</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/fr/faq</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/de/faq</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/it/faq</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- ── Guide: How to Export ── -->
   <url>
@@ -57,11 +69,15 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://tubetrace.pages.dev/pt/guide/how-to-export-youtube-watch-history"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tubetrace.pages.dev/es/guide/how-to-export-youtube-watch-history"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tubetrace.pages.dev/fr/guide/how-to-export-youtube-watch-history"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tubetrace.pages.dev/de/guide/how-to-export-youtube-watch-history"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://tubetrace.pages.dev/it/guide/how-to-export-youtube-watch-history"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tubetrace.pages.dev/guide/how-to-export-youtube-watch-history"/>
   </url>
   <url><loc>https://tubetrace.pages.dev/pt/guide/how-to-export-youtube-watch-history</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/es/guide/how-to-export-youtube-watch-history</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/fr/guide/how-to-export-youtube-watch-history</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/de/guide/how-to-export-youtube-watch-history</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/it/guide/how-to-export-youtube-watch-history</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- ── Guide: Google Takeout ── -->
   <url>
@@ -73,11 +89,15 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://tubetrace.pages.dev/pt/guide/google-takeout-youtube-history"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tubetrace.pages.dev/es/guide/google-takeout-youtube-history"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tubetrace.pages.dev/fr/guide/google-takeout-youtube-history"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tubetrace.pages.dev/de/guide/google-takeout-youtube-history"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://tubetrace.pages.dev/it/guide/google-takeout-youtube-history"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tubetrace.pages.dev/guide/google-takeout-youtube-history"/>
   </url>
   <url><loc>https://tubetrace.pages.dev/pt/guide/google-takeout-youtube-history</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/es/guide/google-takeout-youtube-history</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/fr/guide/google-takeout-youtube-history</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/de/guide/google-takeout-youtube-history</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/it/guide/google-takeout-youtube-history</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- ── Guide: YouTube Wrapped Alternative ── -->
   <url>
@@ -89,11 +109,15 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://tubetrace.pages.dev/pt/guide/youtube-wrapped-alternative"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tubetrace.pages.dev/es/guide/youtube-wrapped-alternative"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tubetrace.pages.dev/fr/guide/youtube-wrapped-alternative"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tubetrace.pages.dev/de/guide/youtube-wrapped-alternative"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://tubetrace.pages.dev/it/guide/youtube-wrapped-alternative"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tubetrace.pages.dev/guide/youtube-wrapped-alternative"/>
   </url>
   <url><loc>https://tubetrace.pages.dev/pt/guide/youtube-wrapped-alternative</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/es/guide/youtube-wrapped-alternative</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/fr/guide/youtube-wrapped-alternative</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/de/guide/youtube-wrapped-alternative</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/it/guide/youtube-wrapped-alternative</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- ── Guide: Recap Not Showing ── -->
   <url>
@@ -105,11 +129,15 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://tubetrace.pages.dev/pt/guide/youtube-recap-not-showing"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tubetrace.pages.dev/es/guide/youtube-recap-not-showing"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tubetrace.pages.dev/fr/guide/youtube-recap-not-showing"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tubetrace.pages.dev/de/guide/youtube-recap-not-showing"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://tubetrace.pages.dev/it/guide/youtube-recap-not-showing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tubetrace.pages.dev/guide/youtube-recap-not-showing"/>
   </url>
   <url><loc>https://tubetrace.pages.dev/pt/guide/youtube-recap-not-showing</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/es/guide/youtube-recap-not-showing</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/fr/guide/youtube-recap-not-showing</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/de/guide/youtube-recap-not-showing</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/it/guide/youtube-recap-not-showing</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- ── Guide: Is History Private ── -->
   <url>
@@ -121,11 +149,15 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://tubetrace.pages.dev/pt/guide/is-youtube-watch-history-private"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tubetrace.pages.dev/es/guide/is-youtube-watch-history-private"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tubetrace.pages.dev/fr/guide/is-youtube-watch-history-private"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tubetrace.pages.dev/de/guide/is-youtube-watch-history-private"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://tubetrace.pages.dev/it/guide/is-youtube-watch-history-private"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tubetrace.pages.dev/guide/is-youtube-watch-history-private"/>
   </url>
   <url><loc>https://tubetrace.pages.dev/pt/guide/is-youtube-watch-history-private</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/es/guide/is-youtube-watch-history-private</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tubetrace.pages.dev/fr/guide/is-youtube-watch-history-private</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/de/guide/is-youtube-watch-history-private</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tubetrace.pages.dev/it/guide/is-youtube-watch-history-private</loc><lastmod>2026-06-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- ── About ── -->
   <url>
@@ -137,11 +169,15 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://tubetrace.pages.dev/pt/about"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tubetrace.pages.dev/es/about"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tubetrace.pages.dev/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tubetrace.pages.dev/de/about"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://tubetrace.pages.dev/it/about"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tubetrace.pages.dev/about"/>
   </url>
   <url><loc>https://tubetrace.pages.dev/pt/about</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://tubetrace.pages.dev/es/about</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://tubetrace.pages.dev/fr/about</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tubetrace.pages.dev/de/about</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tubetrace.pages.dev/it/about</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
 
   <!-- ── Contact ── -->
   <url>
@@ -153,10 +189,14 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://tubetrace.pages.dev/pt/contact"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tubetrace.pages.dev/es/contact"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://tubetrace.pages.dev/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tubetrace.pages.dev/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://tubetrace.pages.dev/it/contact"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tubetrace.pages.dev/contact"/>
   </url>
   <url><loc>https://tubetrace.pages.dev/pt/contact</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://tubetrace.pages.dev/es/contact</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://tubetrace.pages.dev/fr/contact</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://tubetrace.pages.dev/de/contact</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://tubetrace.pages.dev/it/contact</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
 
 </urlset>

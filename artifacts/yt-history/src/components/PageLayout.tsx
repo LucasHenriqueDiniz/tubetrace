@@ -29,16 +29,16 @@ export function PageLayout({ children, locale = "en", basePath }: PageLayoutProp
 
           <nav className="hidden md:flex items-center gap-5 text-sm text-muted-foreground">
             <Link href={localePath(locale, "/sample")} className="hover:text-foreground transition-colors">
-              {locale === "pt" ? "Relatório de Exemplo" : locale === "es" ? "Ejemplo" : locale === "fr" ? "Exemple" : "Sample Report"}
+              {locale === "pt" ? "Relatório de Exemplo" : locale === "es" ? "Ejemplo" : locale === "fr" ? "Exemple" : locale === "de" ? "Beispielbericht" : locale === "it" ? "Report di esempio" : "Sample Report"}
             </Link>
             <Link href={localePath(locale, "/guide/how-to-export-youtube-watch-history")} className="hover:text-foreground transition-colors">
-              {locale === "pt" ? "Guia" : locale === "es" ? "Guía" : locale === "fr" ? "Guide" : "Guide"}
+              {locale === "pt" ? "Guia" : locale === "es" ? "Guía" : locale === "fr" ? "Guide" : locale === "de" ? "Anleitung" : locale === "it" ? "Guida" : "Guide"}
             </Link>
             <Link href={localePath(locale, "/faq")} className="hover:text-foreground transition-colors">
               FAQ
             </Link>
             <Link href={localePath(locale, "/about")} className="hover:text-foreground transition-colors">
-              {locale === "pt" ? "Sobre" : locale === "es" ? "Acerca" : locale === "fr" ? "À propos" : "About"}
+              {locale === "pt" ? "Sobre" : locale === "es" ? "Acerca" : locale === "fr" ? "À propos" : locale === "de" ? "Über uns" : locale === "it" ? "Chi siamo" : "About"}
             </Link>
           </nav>
 
@@ -58,7 +58,7 @@ export function PageLayout({ children, locale = "en", basePath }: PageLayoutProp
                   >
                     <span className="font-bold">{LOCALE_LABELS[l]}</span>
                     <span className="text-muted-foreground/70">
-                      {l === "en" ? "English" : l === "pt" ? "Português" : l === "es" ? "Español" : "Français"}
+                      {l === "en" ? "English" : l === "pt" ? "Português" : l === "es" ? "Español" : l === "fr" ? "Français" : l === "de" ? "Deutsch" : "Italiano"}
                     </span>
                   </Link>
                 ))}
@@ -78,7 +78,7 @@ export function PageLayout({ children, locale = "en", basePath }: PageLayoutProp
               href={localePath(locale, "/")}
               className="hidden sm:inline-flex items-center justify-center rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
             >
-              {locale === "pt" ? "Analisar" : locale === "es" ? "Analizar" : locale === "fr" ? "Analyser" : "Analyze"}
+              {locale === "pt" ? "Analisar" : locale === "es" ? "Analizar" : locale === "fr" ? "Analyser" : locale === "de" ? "Analysieren" : locale === "it" ? "Analizza" : "Analyze"}
             </Link>
           </div>
         </div>

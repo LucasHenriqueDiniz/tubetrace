@@ -71,6 +71,30 @@ const meta = {
     ctaTitle: "Prêt à voir votre propre rapport ?",
     ctaDesc: "Exportez votre historique YouTube depuis Google Takeout, déposez le fichier sur TubeTrace et obtenez votre rapport personnalisé en quelques secondes — 100% privé.",
   },
+  de: {
+    title: "Beispiel-YouTube-Verlaufsbericht — TubeTrace",
+    desc: "Sieh, wie ein TubeTrace-Bericht aussieht. Erkunde einen vollständigen Beispielbericht mit Schauerpersönlichkeit, Top-Kanälen, Binge-Sessions, Aktivitäts-Heatmap und Schaumustern.",
+    banner: "Dies ist ein Beispielbericht mit synthetischen Daten. Lade deinen eigenen Google-Takeout-Export hoch, um deine echten Statistiken zu sehen.",
+    eyebrow: "Beispielbericht",
+    h1: "So sieht deine YouTube-Verlaufsanalyse aus",
+    sub: "Unten ist ein Beispielbericht, der aus synthetischen YouTube-Verlaufsdaten generiert wurde. Dein tatsächlicher Bericht spiegelt deine eigenen Kanäle, Gewohnheiten und Schauerpersönlichkeit wider.",
+    ctaUpload: "Meinen Verlauf analysieren",
+    ctaExport: "Wie exportiere ich meine Daten",
+    ctaTitle: "Bereit, deinen eigenen Bericht zu sehen?",
+    ctaDesc: "Exportiere deinen YouTube-Verlauf von Google Takeout, ziehe die Datei auf TubeTrace und erhalte deinen personalisierten Bericht in Sekunden — 100% privat.",
+  },
+  it: {
+    title: "Esempio di Report Cronologia YouTube — TubeTrace",
+    desc: "Scopri come appare un report TubeTrace. Esplora un esempio completo con personalità di visualizzatore, canali principali, sessioni binge, heatmap dell'attività e pattern di visione.",
+    banner: "Questo è un report di esempio con dati sintetici. Carica il tuo export di Google Takeout per vedere le tue statistiche reali.",
+    eyebrow: "Report di Esempio",
+    h1: "Come appare la tua analisi della cronologia YouTube",
+    sub: "Di seguito è riportato un report di esempio generato da dati sintetici della cronologia YouTube. Il tuo report reale rifletterà i tuoi canali, abitudini e personalità di visualizzatore.",
+    ctaUpload: "Analizza la mia cronologia",
+    ctaExport: "Come esportare i miei dati",
+    ctaTitle: "Pronto a vedere il tuo report?",
+    ctaDesc: "Esporta la tua cronologia YouTube da Google Takeout, trascina il file su TubeTrace e ottieni il tuo report personalizzato in pochi secondi — 100% privato.",
+  },
 };
 
 interface Props { locale?: Locale }

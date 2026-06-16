@@ -12,6 +12,8 @@ const loaders: Record<Locale, () => Promise<YoutubeWrappedContent>> = {
   pt: async () => (await import("@/i18n/content/youtube-wrapped.pt")).youtubeWrappedPt,
   es: async () => (await import("@/i18n/content/youtube-wrapped.es")).youtubeWrappedEs,
   fr: async () => (await import("@/i18n/content/youtube-wrapped.fr")).youtubeWrappedFr,
+  de: async () => (await import("@/i18n/content/youtube-wrapped.de")).youtubeWrappedDe,
+  it: async () => (await import("@/i18n/content/youtube-wrapped.it")).youtubeWrappedIt,
 };
 
 interface Props { locale?: Locale }

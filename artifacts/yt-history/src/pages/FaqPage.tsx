@@ -11,6 +11,8 @@ const loaders: Record<Locale, () => Promise<FaqContent>> = {
   pt: async () => (await import("@/i18n/content/faq.pt")).faqPt,
   es: async () => (await import("@/i18n/content/faq.es")).faqEs,
   fr: async () => (await import("@/i18n/content/faq.fr")).faqFr,
+  de: async () => (await import("@/i18n/content/faq.de")).faqDe,
+  it: async () => (await import("@/i18n/content/faq.it")).faqIt,
 };
 
 interface Props { locale?: Locale }
@@ -46,7 +48,7 @@ export function FaqPage({ locale = "en" }: Props) {
           <p className="text-sm text-muted-foreground mb-4">
             {t.stillHaveDesc.split("export guide")[0]}
             <Link href={localePath(locale, "/guide/how-to-export-youtube-watch-history")} className="text-primary hover:underline">
-              {locale === "pt" ? "guia de exportação" : locale === "es" ? "guía de exportación" : locale === "fr" ? "guide d'export" : "export guide"}
+              {locale === "pt" ? "guia de exportação" : locale === "es" ? "guía de exportación" : locale === "fr" ? "guide d'export" : locale === "de" ? "Exportanleitung" : locale === "it" ? "guida all'esportazione" : "export guide"}
             </Link>
             {t.stillHaveDesc.split("export guide")[1] || "."}
           </p>

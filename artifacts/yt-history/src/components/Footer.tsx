@@ -45,6 +45,22 @@ const labels: Record<Locale, {
     tagline: "Analyseur d'historique YouTube. Vos données ne quittent jamais votre navigateur.",
     disclaimer: "Non affilié à YouTube ou Google.",
   },
+  de: {
+    tools: "Tools", analyzeHistory: "Verlauf analysieren", sampleReport: "Beispielbericht",
+    guides: "Anleitungen", exportGuide: "YouTube-Verlauf exportieren", takeoutGuide: "Google Takeout Anleitung",
+    wrappedAlt: "YouTube Wrapped Alternative", recapNotShowing: "Recap wird nicht angezeigt", historyPrivate: "Ist der Verlauf privat?",
+    company: "Unternehmen", about: "Über uns", faq: "FAQ", contact: "Kontakt", privacy: "Datenschutz", terms: "Nutzungsbedingungen",
+    tagline: "Privater YouTube-Verlaufsanalysator. Deine Daten verlassen nie deinen Browser.",
+    disclaimer: "Nicht verbunden mit YouTube oder Google.",
+  },
+  it: {
+    tools: "Strumenti", analyzeHistory: "Analizza cronologia", sampleReport: "Report di esempio",
+    guides: "Guide", exportGuide: "Esporta cronologia YouTube", takeoutGuide: "Guida Google Takeout",
+    wrappedAlt: "Alternativa YouTube Wrapped", recapNotShowing: "Recap non appare", historyPrivate: "La cronologia è privata?",
+    company: "Azienda", about: "Chi siamo", faq: "FAQ", contact: "Contatti", privacy: "Privacy", terms: "Termini",
+    tagline: "Analizzatore privato della cronologia YouTube. I tuoi dati non lasciano mai il browser.",
+    disclaimer: "Non affiliato a YouTube o Google.",
+  },
 };
 
 export function Footer({ locale = "en" }: FooterProps) {
