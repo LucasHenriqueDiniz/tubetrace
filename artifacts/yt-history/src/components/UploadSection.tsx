@@ -1,18 +1,23 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import {
   AlertCircle,
   Archive,
+  BarChart2,
   CheckCircle2,
   Clock,
   ExternalLink,
   FileCode,
   FileJson,
+  Flame,
   HelpCircle,
   Play,
   ShieldCheck,
+  Sparkles,
   UploadCloud,
+  Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -357,11 +362,110 @@ export function UploadSection() {
         className="mt-8 md:mt-12 flex flex-col items-center gap-4"
       >
         <p className="text-sm text-muted-foreground uppercase tracking-widest font-semibold">{t.tryIt}</p>
-        <Button onClick={handleDemo} variant="secondary" size="lg" className="rounded-full px-8 gap-2 font-semibold">
-          <Play className="w-4 h-4" />
-          {t.demo}
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-3 items-center">
+          <Button onClick={handleDemo} variant="secondary" size="lg" className="rounded-full px-8 gap-2 font-semibold">
+            <Play className="w-4 h-4" />
+            {t.demo}
+          </Button>
+          <Link
+            href="/sample"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-2.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-card transition-colors"
+          >
+            <Sparkles className="w-4 h-4" />
+            {locale === "pt-BR" ? "Ver relatório de exemplo" : "View sample report"}
+          </Link>
+        </div>
       </motion.div>
+
+      {/* ── SEO content sections ── */}
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="mt-16 w-full"
+      >
+        <h2 className="text-2xl font-bold text-center mb-8">
+          {locale === "pt-BR" ? "O que o TubeTrace analisa" : "What TubeTrace shows you"}
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {[
+            {
+              icon: Sparkles,
+              title: locale === "pt-BR" ? "Personalidade de espectador" : "Viewing personality",
+              desc: locale === "pt-BR"
+                ? "Descubra seu arquétipo: Coruja Noturna, Maratonista, Fã Leal, Eclético e mais."
+                : "Discover your archetype: Night Owl, Binge Watcher, Loyal Fan, Variety Seeker, and more.",
+            },
+            {
+              icon: Users,
+              title: locale === "pt-BR" ? "Top canais" : "Top channels",
+              desc: locale === "pt-BR"
+                ? "Veja quais canais dominam seu histórico por contagem de vídeos e porcentagem."
+                : "See which channels dominate your history by video count and percentage.",
+            },
+            {
+              icon: Flame,
+              title: locale === "pt-BR" ? "Sessões de maratona" : "Binge sessions",
+              desc: locale === "pt-BR"
+                ? "Detecta períodos em que você assistiu 4+ vídeos em sequência rápida."
+                : "Detects periods when you watched 4+ videos in rapid succession.",
+            },
+            {
+              icon: BarChart2,
+              title: locale === "pt-BR" ? "Padrões de consumo" : "Watch patterns",
+              desc: locale === "pt-BR"
+                ? "Atividade por hora, dia da semana e mês — descubra quando você mais assiste."
+                : "Activity by hour, day of week, and month — find out when you watch the most.",
+            },
+          ].map(({ icon: Icon, title, desc }) => (
+            <div key={title} className="rounded-2xl border border-border/60 bg-card/60 p-5">
+              <Icon className="w-5 h-5 text-primary mb-3" />
+              <h3 className="font-bold mb-1">{title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="mt-12 w-full rounded-2xl border border-border/60 bg-card/60 p-6"
+      >
+        <h2 className="text-lg font-bold mb-4">
+          {locale === "pt-BR" ? "Guias úteis" : "Helpful guides"}
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-3 text-sm">
+          {[
+            {
+              href: "/guide/how-to-export-youtube-watch-history",
+              label: locale === "pt-BR" ? "Como exportar seu histórico do YouTube" : "How to export your YouTube history",
+            },
+            {
+              href: "/guide/youtube-wrapped-alternative",
+              label: locale === "pt-BR" ? "Alternativa ao YouTube Wrapped" : "YouTube Wrapped alternative",
+            },
+            {
+              href: "/guide/youtube-recap-not-showing",
+              label: locale === "pt-BR" ? "YouTube Recap não aparece — o que fazer" : "YouTube Recap not showing — what to do",
+            },
+            {
+              href: "/guide/is-youtube-watch-history-private",
+              label: locale === "pt-BR" ? "Seu histórico do YouTube é privado?" : "Is your YouTube history private?",
+            },
+          ].map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <span className="text-primary">→</span>
+              {label}
+            </Link>
+          ))}
+        </div>
+      </motion.section>
       </div>
     </div>
   );
