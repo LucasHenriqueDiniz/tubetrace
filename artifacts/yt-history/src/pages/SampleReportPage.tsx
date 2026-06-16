@@ -14,18 +14,71 @@ import { TopChannels } from "@/components/TopChannels";
 import { WatchPatterns } from "@/components/WatchPatterns";
 import { BingeSessions } from "@/components/BingeSessions";
 import { FunInsights } from "@/components/FunInsights";
+import type { Locale } from "@/i18n/types";
+import { localePath } from "@/i18n/utils";
 
 const container = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.06 } },
 };
 
-export function SampleReportPage() {
-  usePageMeta(
-    "Sample YouTube Watch History Report — TubeTrace",
-    "See what a TubeTrace report looks like. Explore a full example report with viewing personality, top channels, binge sessions, activity heatmap, and watch patterns.",
-    "https://tubetrace.pages.dev/sample",
-  );
+const meta = {
+  en: {
+    title: "Sample YouTube Watch History Report — TubeTrace",
+    desc: "See what a TubeTrace report looks like. Explore a full example report with viewing personality, top channels, binge sessions, activity heatmap, and watch patterns.",
+    banner: "This is a sample report with synthetic data. Upload your own Google Takeout export to see your real stats.",
+    eyebrow: "Example Report",
+    h1: "What your YouTube history analysis looks like",
+    sub: "Below is a full example report generated from synthetic YouTube watch history data. Your actual report will reflect your own channels, habits, and viewing personality.",
+    ctaUpload: "Analyze My History",
+    ctaExport: "How to Export My Data",
+    ctaTitle: "Ready to see your own report?",
+    ctaDesc: "Export your YouTube history from Google Takeout, drop the file on TubeTrace, and get your personalized report in seconds — 100% private.",
+  },
+  pt: {
+    title: "Relatório de Exemplo do Histórico do YouTube — TubeTrace",
+    desc: "Veja como é um relatório do TubeTrace. Explore um exemplo completo com personalidade de espectador, top canais, maratonas, heatmap de atividade e padrões de consumo.",
+    banner: "Este é um relatório de exemplo com dados sintéticos. Envie sua própria exportação do Google Takeout para ver suas estatísticas reais.",
+    eyebrow: "Relatório de Exemplo",
+    h1: "Como é a análise do seu histórico do YouTube",
+    sub: "Abaixo está um relatório de exemplo gerado com dados sintéticos. Seu relatório real vai refletir seus próprios canais, hábitos e personalidade de espectador.",
+    ctaUpload: "Analisar meu histórico",
+    ctaExport: "Como exportar meus dados",
+    ctaTitle: "Pronto para ver seu relatório?",
+    ctaDesc: "Exporte seu histórico do YouTube pelo Google Takeout, envie o arquivo para o TubeTrace e veja seu relatório em segundos — 100% privado.",
+  },
+  es: {
+    title: "Informe de Ejemplo del Historial de YouTube — TubeTrace",
+    desc: "Mira cómo se ve un informe de TubeTrace. Explora un ejemplo completo con personalidad de espectador, canales principales, sesiones de maratón y patrones de visualización.",
+    banner: "Este es un informe de ejemplo con datos sintéticos. Sube tu propia exportación de Google Takeout para ver tus estadísticas reales.",
+    eyebrow: "Informe de Ejemplo",
+    h1: "Así es el análisis de tu historial de YouTube",
+    sub: "A continuación hay un informe de ejemplo generado con datos sintéticos. Tu informe real reflejará tus propios canales, hábitos y personalidad como espectador.",
+    ctaUpload: "Analizar mi historial",
+    ctaExport: "Cómo exportar mis datos",
+    ctaTitle: "¿Listo para ver tu propio informe?",
+    ctaDesc: "Exporta tu historial de YouTube desde Google Takeout, sube el archivo a TubeTrace y obtén tu informe personalizado en segundos — 100% privado.",
+  },
+  fr: {
+    title: "Exemple de Rapport d'Historique YouTube — TubeTrace",
+    desc: "Découvrez à quoi ressemble un rapport TubeTrace. Explorez un exemple complet avec personnalité de spectateur, chaînes principales, sessions de binge et habitudes de visionnage.",
+    banner: "Ceci est un rapport d'exemple avec des données synthétiques. Importez votre propre export Google Takeout pour voir vos vraies statistiques.",
+    eyebrow: "Exemple de Rapport",
+    h1: "À quoi ressemble votre analyse d'historique YouTube",
+    sub: "Voici un rapport d'exemple généré à partir de données YouTube synthétiques. Votre rapport réel reflétera vos propres chaînes, habitudes et personnalité de spectateur.",
+    ctaUpload: "Analyser mon historique",
+    ctaExport: "Comment exporter mes données",
+    ctaTitle: "Prêt à voir votre propre rapport ?",
+    ctaDesc: "Exportez votre historique YouTube depuis Google Takeout, déposez le fichier sur TubeTrace et obtenez votre rapport personnalisé en quelques secondes — 100% privé.",
+  },
+};
+
+interface Props { locale?: Locale }
+
+export function SampleReportPage({ locale = "en" }: Props) {
+  const c = meta[locale];
+  const canonical = `https://tubetrace.pages.dev${localePath(locale, "/sample")}`;
+  usePageMeta(c.title, c.desc, canonical);
 
   const { data, setData } = useHistoryStore();
 
@@ -37,7 +90,7 @@ export function SampleReportPage() {
 
   if (!data) {
     return (
-      <PageLayout>
+      <PageLayout locale={locale} basePath="/sample">
         <div className="min-h-[60vh] flex items-center justify-center">
           <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
         </div>
@@ -46,42 +99,24 @@ export function SampleReportPage() {
   }
 
   return (
-    <PageLayout>
-      {/* sample banner */}
+    <PageLayout locale={locale} basePath="/sample">
       <div className="bg-primary/10 border-b border-primary/20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-sm">
             <Info className="w-4 h-4 text-primary shrink-0" />
-            <span className="text-muted-foreground">
-              This is a <strong className="text-foreground">sample report</strong> with synthetic data.
-              Upload your own Google Takeout export to see your real stats.
-            </span>
+            <span className="text-muted-foreground">{c.banner}</span>
           </div>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground shrink-0 hover:bg-primary/90 transition-colors"
-          >
-            <UploadCloud className="w-3.5 h-3.5" />
-            Analyze My History
+          <Link href={localePath(locale, "/")} className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground shrink-0 hover:bg-primary/90 transition-colors">
+            <UploadCloud className="w-3.5 h-3.5" />{c.ctaUpload}
           </Link>
         </div>
       </div>
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-16"
-      >
+      <motion.div variants={container} initial="hidden" animate="show" className="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-16">
         <div className="text-center">
-          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Example Report</p>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">
-            What your YouTube history analysis looks like
-          </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Below is a full example report generated from synthetic YouTube watch history data.
-            Your actual report will reflect your own channels, habits, and viewing personality.
-          </p>
+          <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-3">{c.eyebrow}</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">{c.h1}</h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto">{c.sub}</p>
         </div>
 
         <PersonalityCard />
@@ -93,26 +128,15 @@ export function SampleReportPage() {
         <BingeSessions />
         <FunInsights />
 
-        {/* bottom CTA */}
         <div className="rounded-3xl border border-primary/20 bg-primary/5 p-8 text-center">
-          <h2 className="text-2xl font-extrabold mb-3">Ready to see your own report?</h2>
-          <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
-            Export your YouTube history from Google Takeout, drop the file on TubeTrace,
-            and get your personalized report in seconds — 100% private.
-          </p>
+          <h2 className="text-2xl font-extrabold mb-3">{c.ctaTitle}</h2>
+          <p className="text-muted-foreground mb-6 max-w-lg mx-auto">{c.ctaDesc}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              <UploadCloud className="w-4 h-4" />
-              Analyze My History
+            <Link href={localePath(locale, "/")} className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+              <UploadCloud className="w-4 h-4" />{c.ctaUpload}
             </Link>
-            <Link
-              href="/guide/how-to-export-youtube-watch-history"
-              className="inline-flex items-center justify-center rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-secondary transition-colors"
-            >
-              How to Export My Data
+            <Link href={localePath(locale, "/guide/how-to-export-youtube-watch-history")} className="inline-flex items-center justify-center rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-secondary transition-colors">
+              {c.ctaExport}
             </Link>
           </div>
         </div>
