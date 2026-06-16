@@ -12,5 +12,8 @@
   "devDependencies": {
     "prettier": "^3.8.1",
     "typescript": "~5.9.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp", "@img/sharp-win32-x64", "workerd"]
   }
 }
