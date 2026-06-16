@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { UploadCloud, Info } from "lucide-react";
@@ -104,13 +104,21 @@ export function SampleReportPage({ locale = "en" }: Props) {
   const canonical = `https://tubetrace.pages.dev${localePath(locale, "/sample")}`;
   usePageMeta(c.title, c.desc, canonical);
 
-  const { data, setData } = useHistoryStore();
+  const { data, setData, reset } = useHistoryStore();
+  const didSetDemo = useRef(false);
 
   useEffect(() => {
     if (!data) {
       setData(generateDemoData());
+      didSetDemo.current = true;
     }
-  }, [data, setData]);
+    return () => {
+      if (didSetDemo.current) {
+        reset();
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!data) {
     return (

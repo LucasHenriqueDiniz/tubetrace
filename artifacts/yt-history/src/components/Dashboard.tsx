@@ -38,13 +38,20 @@ export function Dashboard() {
       {/* ── sticky header ── */}
       <header className="sticky top-0 z-50 border-b border-border/40 bg-background/75 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-          <span className="text-base font-extrabold tracking-tight shrink-0">
-            Tube<span className="text-primary">Trace</span>
-          </span>
+          <button
+            onClick={reset}
+            className="flex items-center gap-2 shrink-0 hover:opacity-80 transition-opacity"
+            aria-label="Back to upload"
+          >
+            <img src="/favicon.svg" alt="TubeTrace" className="h-7 w-7 rounded-lg" />
+            <span className="text-base font-extrabold tracking-tight">
+              Tube<span className="text-primary">Trace</span>
+            </span>
+          </button>
 
-          {/* data range pill */}
+          {/* data summary pill */}
           <span className="hidden sm:block text-xs text-muted-foreground bg-secondary/60 px-3 py-1 rounded-full font-medium truncate max-w-xs">
-            {data.totalVideos.toLocaleString("pt-BR")} vídeos · {data.uniqueChannels.toLocaleString("pt-BR")} canais
+            {data.totalVideos.toLocaleString()} videos · {data.uniqueChannels.toLocaleString()} channels
           </span>
 
           <div className="flex items-center gap-2 shrink-0">
@@ -55,7 +62,7 @@ export function Dashboard() {
               className="gap-2 text-xs rounded-full"
             >
               <Share2 className="w-3.5 h-3.5" />
-              {sharing ? "Gerando…" : "Compartilhar"}
+              {sharing ? "Sharing…" : "Share"}
             </Button>
             <Button
               variant="outline"
@@ -64,7 +71,7 @@ export function Dashboard() {
               className="gap-2 text-xs rounded-full"
             >
               <UploadCloud className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Novo arquivo</span>
+              <span className="hidden sm:inline">New file</span>
             </Button>
           </div>
         </div>
