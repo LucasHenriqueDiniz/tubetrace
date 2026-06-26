@@ -9,8 +9,8 @@ on:
 jobs:
   build:
     name: Build Verification
-    needs: [typecheck, lint, test]
-    if: always() && (needs.typecheck.result == 'success' || needs.typecheck.result == 'skipped')
+    needs: typecheck
+    if: success()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
