@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { AboutPage } from "@/pages/AboutPage";
 import { FaqPage } from "@/pages/FaqPage";
 import { ContactPage } from "@/pages/ContactPage";
+import { PrivacyPolicyPage } from "@/pages/PrivacyPolicyPage";
 import { SampleReportPage } from "@/pages/SampleReportPage";
 import { HowToExportGuide } from "@/pages/guides/HowToExportGuide";
 import { GoogleTakeoutGuide } from "@/pages/guides/GoogleTakeoutGuide";
@@ -43,6 +44,9 @@ function LocaleRoutes({ locale }: { locale: Locale }) {
       <Route path={`/${locale}/contact`}>
         {() => <ContactPage locale={locale} />}
       </Route>
+      <Route path={`/${locale}/privacy`}>
+        {() => <PrivacyPolicyPage locale={locale} />}
+      </Route>
       <Route path={`/${locale}/sample`}>
         {() => <SampleReportPage locale={locale} />}
       </Route>
@@ -76,6 +80,7 @@ function App() {
             <Route path="/about"><AboutPage /></Route>
             <Route path="/faq"><FaqPage /></Route>
             <Route path="/contact"><ContactPage /></Route>
+            <Route path="/privacy"><PrivacyPolicyPage /></Route>
             <Route path="/sample"><SampleReportPage /></Route>
             <Route path="/guide/how-to-export-youtube-watch-history"><HowToExportGuide /></Route>
             <Route path="/guide/google-takeout-youtube-history"><GoogleTakeoutGuide /></Route>

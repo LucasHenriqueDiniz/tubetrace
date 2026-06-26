@@ -105,7 +105,7 @@ export function Footer({ locale = "en" }: FooterProps) {
                 <div><Link href={localePath(locale, "/about")} className="hover:text-foreground transition-colors">{t.about}</Link></div>
                 <div><Link href={localePath(locale, "/faq")} className="hover:text-foreground transition-colors">{t.faq}</Link></div>
                 <div><Link href={localePath(locale, "/contact")} className="hover:text-foreground transition-colors">{t.contact}</Link></div>
-                <div><a href="/privacy.html" target="_blank" rel="noopener" className="hover:text-foreground transition-colors">{t.privacy}</a></div>
+                <div><Link href={localePath(locale, "/privacy")} className="hover:text-foreground transition-colors">{t.privacy}</Link></div>
                 <div><a href="/terms.html" target="_blank" rel="noopener" className="hover:text-foreground transition-colors">{t.terms}</a></div>
                 <div>
                   <a href="https://github.com/LucasHenriqueDiniz/tubetrace" target="_blank" rel="noopener" className="flex items-center gap-1.5 hover:text-foreground transition-colors">

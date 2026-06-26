@@ -177,3 +177,25 @@ export interface FaqContent {
   stillHaveDesc: string;
   cta: { analyze: string; sample: string };
 }
+
+// ─── Privacy Policy ──────────────────────────────────────────────
+
+export interface PrivacySection {
+  h2: string;
+  paragraphs: string[];
+  items?: string[];
+  subsections?: Array<{
+    h3: string;
+    paragraphs: string[];
+    items?: string[];
+  }>;
+}
+
+export interface PrivacyContent {
+  meta: PageMeta;
+  eyebrow: string;
+  h1: string;
+  updated: string;
+  summary: string;
+  sections: PrivacySection[];
+}
