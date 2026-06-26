@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: '22'
           cache: 'pnpm'
-      - run: cd artifacts/yt-history && pnpm install
+      - run: cd artifacts/yt-history && pnpm install --no-frozen-lockfile
       - run: cd artifacts/yt-history && pnpm run build
       - uses: actions/upload-artifact@v4
         with:
