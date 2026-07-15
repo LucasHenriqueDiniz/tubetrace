@@ -53,6 +53,21 @@ export const youtubeRecapEn: YoutubeRecapContent = {
     "100% private — processed in your browser",
     "No login or account required",
   ],
+  faqH2: "Frequently asked questions",
+  faqs: [
+    {
+      q: "Will YouTube Recap eventually show up if I just wait?",
+      a: "Possibly — YouTube rolls Recap out gradually and doesn't guarantee a date. If you don't want to wait, TubeTrace gives you the same kind of insights immediately, without depending on YouTube's rollout schedule.",
+    },
+    {
+      q: "Does turning my watch history back on retroactively fix Recap?",
+      a: "No. Re-enabling history only affects future viewing — it can't recover data from a period when history was paused or deleted. TubeTrace has the same limitation, since it also relies on the watch-history file YouTube itself keeps.",
+    },
+    {
+      q: "Is there an official way to contact YouTube about missing Recap?",
+      a: "YouTube doesn't offer individual support for Recap eligibility, since it's an automated, criteria-based rollout rather than a manually granted feature. There's no support ticket that will make it appear sooner.",
+    },
+  ],
   cta: {
     h2: "Don't wait for YouTube Recap",
     desc: "Get your full YouTube year-in-review right now — for every year you have history.",

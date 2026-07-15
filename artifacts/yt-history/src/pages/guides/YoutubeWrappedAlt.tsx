@@ -99,6 +99,18 @@ export function YoutubeWrappedAlt({ locale = "en" }: Props) {
           </ol>
         </section>
 
+        <section className="mb-14">
+          <h2 className="text-2xl font-bold mb-6">{t.faqH2}</h2>
+          <div className="space-y-4">
+            {t.faqs.map(({ q, a }) => (
+              <div key={q} className="rounded-2xl border border-border/60 bg-card/60 p-5">
+                <h3 className="font-semibold mb-2">{q}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <div className="rounded-3xl border border-primary/20 bg-primary/5 p-8 text-center">
           <h2 className="text-2xl font-extrabold mb-3">{t.cta.h2}</h2>
           <p className="text-muted-foreground mb-6">{t.cta.desc}</p>

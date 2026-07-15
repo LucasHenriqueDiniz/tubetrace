@@ -74,6 +74,21 @@ export const youtubePrivacyFr: YoutubePrivacyContent = {
     "Pas de compte requis, pas de cookies de suivi",
     "Le code source est ouvert et vérifiable sur GitHub",
   ],
+  faqH2: "Questions fréquentes",
+  faqs: [
+    {
+      q: "Une chaîne à laquelle je suis abonné peut-elle voir que j'ai regardé ses vidéos ?",
+      a: "Non. Les créateurs peuvent voir des statistiques de vues agrégées et anonymisées pour leur propre chaîne, mais ils ne peuvent pas voir quels comptes spécifiques ont regardé leurs vidéos ni relier une vue à votre identité.",
+    },
+    {
+      q: "Supprimer mon historique YouTube le supprime-t-il entièrement des serveurs de Google ?",
+      a: "Supprimer l'historique le retire de la vue de votre compte et de fonctionnalités comme les recommandations, mais les politiques générales de conservation des données et de rétention légale de Google (documentées dans la politique de confidentialité de Google) peuvent conserver certains enregistrements pendant une durée limitée de leur côté.",
+    },
+    {
+      q: "Si j'utilise TubeTrace, YouTube sait-il que j'ai analysé mon historique ?",
+      a: "Non. TubeTrace ne se connecte jamais à votre compte YouTube ou Google — il ne fait que lire le fichier d'export que vous avez déjà téléchargé, entièrement dans votre navigateur. YouTube n'a aucune visibilité sur ce processus.",
+    },
+  ],
   cta: {
     h2: "Explorez votre historique en toute confidentialité",
     desc: "Analysez vos habitudes YouTube sans jamais partager vos données. Gratuit, privé et open source.",

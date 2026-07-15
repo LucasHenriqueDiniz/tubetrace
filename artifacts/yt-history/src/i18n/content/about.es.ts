@@ -58,4 +58,14 @@ export const aboutEs: AboutContent = {
     sample: "Ver informe de ejemplo",
     github: "Ver en GitHub",
   },
+  creator: {
+    h2: "Sobre el creador",
+    name: "Lucas Henrique Diniz",
+    bio: "Desarrollador de software que crea herramientas open-source centradas en la privacidad. TubeTrace es una de ellas — creada para que cualquiera pueda ver sus propios hábitos de YouTube sin que ningún dato salga de su dispositivo.",
+    links: {
+      github: "https://github.com/LucasHenriqueDiniz/",
+      website: "https://lucashdo.com/",
+      linkedin: "https://www.linkedin.com/in/lucas-diniz-ostroski/",
+    },
+  },
 };

@@ -73,6 +73,21 @@ export const youtubePrivacyPt: YoutubePrivacyContent = {
     "Código aberto — qualquer pessoa pode auditar",
     "Funciona até mesmo offline após o carregamento da página",
   ],
+  faqH2: "Perguntas frequentes",
+  faqs: [
+    {
+      q: "Um canal que eu sigo consegue ver que assisti aos vídeos dele?",
+      a: "Não. Criadores conseguem ver contagens de visualizações agregadas e anônimas do próprio canal, mas não conseguem ver quais contas específicas assistiram aos vídeos nem vincular uma visualização à sua identidade.",
+    },
+    {
+      q: "Apagar meu histórico do YouTube o remove totalmente dos servidores do Google?",
+      a: "Apagar o histórico o remove da visualização da sua conta e de recursos como recomendações, mas as políticas gerais de retenção de dados e retenção legal do Google (documentadas na própria política de privacidade do Google) podem manter certos registros por um período limitado do lado deles.",
+    },
+    {
+      q: "Se eu usar o TubeTrace, o YouTube fica sabendo que analisei meu histórico?",
+      a: "Não. O TubeTrace nunca se conecta à sua conta do YouTube ou Google — ele só lê o arquivo de exportação que você já baixou, inteiramente dentro do seu navegador. O YouTube não tem nenhuma visibilidade sobre esse processo.",
+    },
+  ],
   cta: {
     h2: "Explore seu histórico com privacidade",
     desc: "Analise seus dados do YouTube sem abrir mão da privacidade. Tudo no seu navegador, sem rastros.",

@@ -84,6 +84,16 @@ export const howToExportEn: HowToExportContent = {
       solution:
         "Check your spam folder. If nothing after 24 hours, go back to takeout.google.com and check 'Manage exports' to see the status.",
     },
+    {
+      problem: "The export only contains a few months of history",
+      solution:
+        "This usually means auto-delete is enabled on your account. Go to myaccount.google.com/activitycontrols, find 'YouTube History', and check the auto-delete setting — if it's set to 3 or 18 months, older entries were already permanently removed by Google and can't be recovered, even with a new export.",
+    },
+    {
+      problem: "TubeTrace shows fewer videos than I expected",
+      solution:
+        "Watch-history.json only includes videos watched while signed in with history enabled. Videos watched in Incognito mode, while signed out, or during a period when history was paused won't appear — this is a YouTube data limitation, not a TubeTrace issue.",
+    },
   ],
   faqH2: "FAQ",
   faqs: [
@@ -98,6 +108,18 @@ export const howToExportEn: HowToExportContent = {
     {
       q: "Is it safe to upload my watch history to TubeTrace?",
       a: "Yes. TubeTrace processes the file locally in your browser and never sends it to any server. See our privacy policy for full details.",
+    },
+    {
+      q: "Do I need to sign in to TubeTrace to see my results?",
+      a: "No. TubeTrace has no login system at all. You just drop your exported file on the upload page and your report is generated instantly in your browser.",
+    },
+    {
+      q: "Can I export my history from the YouTube app instead of a browser?",
+      a: "Google Takeout is only available through a browser at takeout.google.com — there's no export option inside the YouTube mobile app. You can still open takeout.google.com in your phone's browser and follow the same steps.",
+    },
+    {
+      q: "What if I have watch history spanning many years?",
+      a: "TubeTrace has no limit on how much history it can process — it can handle exports covering a decade or more. Very large exports (tens of thousands of entries) may take a few extra seconds to parse, but everything still happens locally in your browser.",
     },
   ],
   cta: {

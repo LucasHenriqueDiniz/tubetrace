@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { PageLayout } from "@/components/PageLayout";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { Link } from "wouter";
-import { Github, ShieldCheck, Zap, Lock, Globe } from "lucide-react";
+import { Github, ShieldCheck, Zap, Lock, Globe, Linkedin } from "lucide-react";
 import type { Locale, AboutContent } from "@/i18n/types";
 import { aboutEn } from "@/i18n/content/about.en";
 import { localePath } from "@/i18n/utils";
@@ -76,6 +76,23 @@ export function AboutPage({ locale = "en" }: Props) {
               </li>
             ))}
           </ol>
+        </div>
+
+        <div className="mb-14 rounded-2xl border border-border/60 bg-card/60 p-6">
+          <h2 className="text-xl font-bold mb-2">{t.creator.h2}</h2>
+          <p className="font-semibold text-foreground">{t.creator.name}</p>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-4">{t.creator.bio}</p>
+          <div className="flex flex-wrap gap-3">
+            <a href={t.creator.links.github} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors">
+              <Github className="w-4 h-4" />GitHub
+            </a>
+            <a href={t.creator.links.website} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors">
+              <Globe className="w-4 h-4" />lucashdo.com
+            </a>
+            <a href={t.creator.links.linkedin} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors">
+              <Linkedin className="w-4 h-4" />LinkedIn
+            </a>
+          </div>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4">

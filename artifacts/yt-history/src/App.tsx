@@ -16,6 +16,7 @@ import { GoogleTakeoutGuide } from "@/pages/guides/GoogleTakeoutGuide";
 import { YoutubeWrappedAlt } from "@/pages/guides/YoutubeWrappedAlt";
 import { YoutubeRecapNotShowing } from "@/pages/guides/YoutubeRecapNotShowing";
 import { IsYoutubeHistoryPrivate } from "@/pages/guides/IsYoutubeHistoryPrivate";
+import { NotFoundPage } from "@/pages/NotFoundPage";
 import type { Locale } from "@/i18n/types";
 import { SUPPORTED_LOCALES } from "@/i18n/types";
 
@@ -65,6 +66,9 @@ function LocaleRoutes({ locale }: { locale: Locale }) {
       <Route path={`/${locale}/guide/is-youtube-watch-history-private`}>
         {() => <IsYoutubeHistoryPrivate locale={locale} />}
       </Route>
+      <Route>
+        {() => <NotFoundPage locale={locale} />}
+      </Route>
     </Switch>
   );
 }
@@ -96,7 +100,7 @@ function App() {
             ))}
 
             {/* Fallback */}
-            <Route component={HomePage} />
+            <Route>{() => <NotFoundPage />}</Route>
           </Switch>
         </Router>
         <Toaster />

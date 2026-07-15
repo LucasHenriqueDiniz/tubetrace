@@ -73,6 +73,21 @@ export const youtubePrivacyEs: YoutubePrivacyContent = {
     "El código fuente es abierto y puede ser auditado por cualquier persona",
     "El archivo que subes nunca se almacena ni se comparte",
   ],
+  faqH2: "Preguntas frecuentes",
+  faqs: [
+    {
+      q: "¿Un canal al que estoy suscrito puede ver que vi sus videos?",
+      a: "No. Los creadores pueden ver recuentos de visualizaciones agregados y anónimos de su propio canal, pero no pueden ver qué cuentas específicas vieron sus videos ni vincular una visualización a tu identidad.",
+    },
+    {
+      q: "¿Borrar mi historial de YouTube lo elimina por completo de los servidores de Google?",
+      a: "Borrar el historial lo elimina de la vista de tu cuenta y de funciones como las recomendaciones, pero las políticas generales de retención de datos y retención legal de Google (documentadas en la propia política de privacidad de Google) pueden mantener ciertos registros durante un tiempo limitado en su lado.",
+    },
+    {
+      q: "Si uso TubeTrace, ¿YouTube sabe que analicé mi historial?",
+      a: "No. TubeTrace nunca se conecta a tu cuenta de YouTube o Google — solo lee el archivo de exportación que ya descargaste, todo dentro de tu navegador. YouTube no tiene ninguna visibilidad sobre ese proceso.",
+    },
+  ],
   cta: {
     h2: "Explora tu historial de forma privada",
     desc: "Analiza lo que has visto en YouTube sin compartir tus datos con nadie.",

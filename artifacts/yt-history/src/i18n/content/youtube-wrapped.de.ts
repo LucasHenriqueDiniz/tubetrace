@@ -73,6 +73,21 @@ export const youtubeWrappedDe: YoutubeWrappedContent = {
       desc: "Verwende die Teilen-Schaltfläche, um eine 1080×1080-Bildkarte mit deinen wichtigsten Statistiken zu erstellen, perfekt zum Teilen in sozialen Medien.",
     },
   ],
+  faqH2: "Häufig gestellte Fragen",
+  faqs: [
+    {
+      q: "Kann ich ein YouTube Wrapped für ein bestimmtes Jahr bekommen, nicht meinen gesamten Verlauf?",
+      a: "TubeTrace zeigt standardmäßig deinen gesamten Verlauf, aber die Aktivitäts-Heatmap und die monatlichen Aufschlüsselungen lassen dich visuell in ein bestimmtes Jahr oder einen Monat innerhalb deiner Daten hineinzoomen.",
+    },
+    {
+      q: "Funktioniert TubeTrace, wenn YouTube Recap bei meinem Konto nie erschienen ist?",
+      a: "Ja — TubeTrace hängt überhaupt nicht von der Recap-Berechtigung von YouTube ab. Solange du eine Google-Takeout-Datei mit Wiedergabeverlauf exportieren kannst, erstellt TubeTrace deinen vollständigen Bericht, egal ob Recap bei dir erschienen ist oder nicht.",
+    },
+    {
+      q: "Basiert der Persönlichkeitstyp auf einem echten Algorithmus oder ist er zufällig?",
+      a: "Er wird aus echten Mustern in deinen Daten berechnet — Sehzeiten, Sitzungslängen, Kanaltreue und Konsistenz über die Tage hinweg — nicht zufällig. Zwei Personen mit unterschiedlichen Gewohnheiten erhalten unterschiedliche Persönlichkeitsergebnisse.",
+    },
+  ],
   cta: {
     h2: "Erstelle jetzt dein YouTube Wrapped",
     desc: "Kostenlos, privat und funktioniert mit deiner vollständigen YouTube-Geschichte — nicht nur dem letzten Jahr.",

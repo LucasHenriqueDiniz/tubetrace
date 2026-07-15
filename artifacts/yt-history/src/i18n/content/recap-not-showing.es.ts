@@ -53,6 +53,21 @@ export const youtubeRecapEs: YoutubeRecapContent = {
     "Tipo de personalidad como espectador",
     "100% privado — tus datos nunca salen de tu navegador",
   ],
+  faqH2: "Preguntas frecuentes",
+  faqs: [
+    {
+      q: "¿El Recap de YouTube aparecerá si simplemente espero?",
+      a: "Es posible — YouTube lanza el Recap de forma gradual y no garantiza una fecha. Si no quieres esperar, TubeTrace te da el mismo tipo de información al instante, sin depender del calendario de lanzamiento de YouTube.",
+    },
+    {
+      q: "¿Reactivar mi historial arregla el Recap de forma retroactiva?",
+      a: "No. Reactivar el historial solo afecta a la visualización futura — no puede recuperar datos de un periodo en que el historial estuvo pausado o eliminado. TubeTrace tiene la misma limitación, ya que también depende del archivo de historial que el propio YouTube conserva.",
+    },
+    {
+      q: "¿Hay una forma oficial de contactar a YouTube sobre el Recap ausente?",
+      a: "YouTube no ofrece soporte individual para la elegibilidad del Recap, ya que es un lanzamiento automatizado basado en criterios, no una función otorgada manualmente. No existe un ticket de soporte que lo haga aparecer antes.",
+    },
+  ],
   cta: {
     h2: "No esperes al YouTube Recap",
     desc: "Analiza tu historial completo ahora mismo con TubeTrace, gratis y sin necesidad de cuenta.",

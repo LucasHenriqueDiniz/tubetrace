@@ -53,6 +53,21 @@ export const youtubeRecapDe: YoutubeRecapContent = {
     "100% privat — im Browser verarbeitet",
     "Kein Login oder Konto erforderlich",
   ],
+  faqH2: "Häufig gestellte Fragen",
+  faqs: [
+    {
+      q: "Wird YouTube Recap irgendwann erscheinen, wenn ich einfach warte?",
+      a: "Möglicherweise — YouTube rollt Recap schrittweise aus und garantiert kein Datum. Wenn du nicht warten möchtest, bietet dir TubeTrace sofort die gleichen Einblicke, unabhängig vom Rollout-Zeitplan von YouTube.",
+    },
+    {
+      q: "Behebt das Reaktivieren meines Verlaufs Recap rückwirkend?",
+      a: "Nein. Die erneute Aktivierung des Verlaufs betrifft nur zukünftiges Ansehen — sie kann keine Daten aus einer Zeit wiederherstellen, in der der Verlauf pausiert oder gelöscht war. TubeTrace hat dieselbe Einschränkung, da es ebenfalls auf die Verlaufsdatei angewiesen ist, die YouTube selbst führt.",
+    },
+    {
+      q: "Gibt es einen offiziellen Weg, YouTube wegen des fehlenden Recap zu kontaktieren?",
+      a: "YouTube bietet keinen individuellen Support für die Recap-Berechtigung, da es sich um einen automatisierten, kriterienbasierten Rollout handelt und nicht um eine manuell vergebene Funktion. Es gibt kein Support-Ticket, das es schneller erscheinen lässt.",
+    },
+  ],
   cta: {
     h2: "Warte nicht auf YouTube Recap",
     desc: "Erhalte deine vollständige YouTube-Jahresrückschau jetzt sofort — für jedes Jahr, für das du Geschichte hast.",

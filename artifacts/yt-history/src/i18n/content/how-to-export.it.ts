@@ -84,6 +84,16 @@ export const howToExportIt: HowToExportContent = {
       solution:
         "Controlla la cartella spam. Se dopo 24 ore non è arrivato nulla, torna su takeout.google.com e controlla \"Gestisci esportazioni\" per vedere lo stato.",
     },
+    {
+      problem: "L'esportazione contiene solo pochi mesi di cronologia",
+      solution:
+        "Di solito significa che l'eliminazione automatica è attiva sul tuo account. Vai su myaccount.google.com/activitycontrols, trova \"Cronologia YouTube\" e controlla l'impostazione di eliminazione automatica — se è impostata su 3 o 18 mesi, le voci più vecchie sono già state rimosse definitivamente da Google e non possono essere recuperate, nemmeno con una nuova esportazione.",
+    },
+    {
+      problem: "TubeTrace mostra meno video del previsto",
+      solution:
+        "Il file watch-history.json include solo i video guardati da account connesso e con la cronologia attiva. I video visti in modalità in incognito, da disconnesso, o durante un periodo in cui la cronologia era in pausa non compariranno — è un limite dei dati di YouTube, non un problema di TubeTrace.",
+    },
   ],
   faqH2: "FAQ",
   faqs: [
@@ -98,6 +108,18 @@ export const howToExportIt: HowToExportContent = {
     {
       q: "È sicuro caricare la mia cronologia su TubeTrace?",
       a: "Sì. TubeTrace elabora il file localmente nel tuo browser e non lo invia mai a nessun server. Consulta la nostra informativa sulla privacy per tutti i dettagli.",
+    },
+    {
+      q: "Devo accedere a TubeTrace per vedere i miei risultati?",
+      a: "No. TubeTrace non ha alcun sistema di accesso. Basta trascinare il file esportato nella pagina di caricamento e il report viene generato istantaneamente nel tuo browser.",
+    },
+    {
+      q: "Posso esportare la cronologia dall'app YouTube invece che dal browser?",
+      a: "Google Takeout è disponibile solo tramite browser su takeout.google.com — non c'è alcuna opzione di esportazione nell'app mobile di YouTube. Puoi comunque aprire takeout.google.com nel browser del telefono e seguire gli stessi passaggi.",
+    },
+    {
+      q: "Cosa succede se ho anni e anni di cronologia?",
+      a: "TubeTrace non ha limiti sulla quantità di cronologia che può elaborare — gestisce esportazioni che coprono un decennio o più. Esportazioni molto grandi (decine di migliaia di voci) potrebbero richiedere qualche secondo in più per l'elaborazione, ma tutto continua ad avvenire localmente nel tuo browser.",
     },
   ],
   cta: {

@@ -84,6 +84,8 @@ export interface GoogleTakeoutContent {
   whatCanH2: string;
   whatCanPre: string;
   whatCanItems: string[];
+  faqH2: string;
+  faqs: Array<{ q: string; a: string }>;
   cta: CtaBlock & { uploadLabel: string };
 }
 
@@ -103,6 +105,8 @@ export interface YoutubeWrappedContent {
   features: Array<{ title: string; desc: string }>;
   howToH2: string;
   howToSteps: Array<{ title: string; desc: string }>;
+  faqH2: string;
+  faqs: Array<{ q: string; a: string }>;
   cta: CtaBlock;
 }
 
@@ -122,6 +126,8 @@ export interface YoutubeRecapContent {
   alternativePara1: string;
   alternativePara2: string;
   alternativeItems: string[];
+  faqH2: string;
+  faqs: Array<{ q: string; a: string }>;
   cta: CtaBlock;
 }
 
@@ -145,6 +151,8 @@ export interface YoutubePrivacyContent {
   isSafeTitle: string;
   isSafeDesc: string;
   isSafeItems: string[];
+  faqH2: string;
+  faqs: Array<{ q: string; a: string }>;
   cta: CtaBlock;
 }
 
@@ -163,6 +171,12 @@ export interface AboutContent {
   howH2: string;
   howSteps: string[];
   cta: { analyze: string; sample: string; github: string };
+  creator: {
+    h2: string;
+    name: string;
+    bio: string;
+    links: { github: string; website: string; linkedin: string };
+  };
 }
 
 // ─── FAQ ─────────────────────────────────────────────────────────

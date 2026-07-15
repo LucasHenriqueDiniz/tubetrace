@@ -84,6 +84,16 @@ export const howToExportDe: HowToExportContent = {
       solution:
         "Überprüfe deinen Spam-Ordner. Wenn nach 24 Stunden nichts angekommen ist, gehe zurück zu takeout.google.com und sieh unter „Exporte verwalten” den Status nach.",
     },
+    {
+      problem: "Der Export enthält nur wenige Monate an Verlauf",
+      solution:
+        "Das bedeutet meist, dass die automatische Löschung für dein Konto aktiviert ist. Gehe zu myaccount.google.com/activitycontrols, suche „YouTube-Verlauf” und überprüfe die Einstellung zur automatischen Löschung — steht sie auf 3 oder 18 Monaten, wurden ältere Einträge bereits dauerhaft von Google entfernt und können auch mit einem neuen Export nicht wiederhergestellt werden.",
+    },
+    {
+      problem: "TubeTrace zeigt weniger Videos an als erwartet",
+      solution:
+        "Die Datei watch-history.json enthält nur Videos, die angemeldet und mit aktiviertem Verlauf angesehen wurden. Videos, die im Inkognito-Modus, abgemeldet oder während einer Pause des Verlaufs angesehen wurden, erscheinen nicht — das ist eine Einschränkung der YouTube-Daten, kein Problem von TubeTrace.",
+    },
   ],
   faqH2: "Häufig gestellte Fragen",
   faqs: [
@@ -98,6 +108,18 @@ export const howToExportDe: HowToExportContent = {
     {
       q: "Ist es sicher, meinen Wiedergabeverlauf bei TubeTrace hochzuladen?",
       a: "Ja. TubeTrace verarbeitet die Datei lokal in deinem Browser und sendet sie nie an einen Server. Weitere Details findest du in unserer Datenschutzrichtlinie.",
+    },
+    {
+      q: "Muss ich mich bei TubeTrace anmelden, um meine Ergebnisse zu sehen?",
+      a: "Nein. TubeTrace hat überhaupt kein Login-System. Du ziehst einfach deine exportierte Datei auf die Upload-Seite und dein Bericht wird sofort in deinem Browser erstellt.",
+    },
+    {
+      q: "Kann ich meinen Verlauf über die YouTube-App statt über einen Browser exportieren?",
+      a: "Google Takeout ist nur über einen Browser unter takeout.google.com verfügbar — es gibt keine Exportoption in der YouTube-Mobile-App. Du kannst takeout.google.com trotzdem im Browser deines Handys öffnen und dieselben Schritte befolgen.",
+    },
+    {
+      q: "Was, wenn ich viele Jahre an Verlauf habe?",
+      a: "TubeTrace hat keine Begrenzung, wie viel Verlauf es verarbeiten kann — es kommt mit Exporten zurecht, die ein Jahrzehnt oder mehr abdecken. Sehr große Exporte (Zehntausende Einträge) können ein paar Sekunden länger zum Verarbeiten brauchen, aber alles läuft weiterhin lokal in deinem Browser ab.",
     },
   ],
   cta: {

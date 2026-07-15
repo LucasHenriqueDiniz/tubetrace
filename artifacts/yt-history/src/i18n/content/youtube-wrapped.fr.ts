@@ -74,6 +74,21 @@ export const youtubeWrappedFr: YoutubeWrappedContent = {
       desc: "En quelques secondes, votre rapport personnel apparaît : statistiques, graphiques, type de personnalité et bien plus encore.",
     },
   ],
+  faqH2: "Questions fréquentes",
+  faqs: [
+    {
+      q: "Puis-je obtenir un YouTube Wrapped pour une année précise, pas tout mon historique ?",
+      a: "TubeTrace affiche votre historique complet par défaut, mais la carte de chaleur d'activité et les répartitions mensuelles vous permettent de vous concentrer visuellement sur une année ou un mois précis dans vos données.",
+    },
+    {
+      q: "TubeTrace fonctionne-t-il si le Recap YouTube n'est jamais apparu sur mon compte ?",
+      a: "Oui — TubeTrace ne dépend absolument pas de l'éligibilité au Recap YouTube. Tant que vous pouvez exporter un fichier Google Takeout avec historique de visionnage, TubeTrace génère votre rapport complet, que le Recap soit apparu ou non pour vous.",
+    },
+    {
+      q: "Le type de personnalité est-il basé sur un vrai algorithme ou est-il aléatoire ?",
+      a: "Il est calculé à partir de tendances réelles dans vos données — horaires de visionnage, durée des sessions, fidélité aux chaînes et régularité entre les jours — pas au hasard. Deux personnes aux habitudes différentes obtiendront des résultats de personnalité différents.",
+    },
+  ],
   cta: {
     h2: "Créez votre YouTube Wrapped maintenant",
     desc: "Importez votre historique Google Takeout et obtenez votre rapport personnalisé en quelques secondes.",

@@ -73,6 +73,21 @@ export const youtubePrivacyDe: YoutubePrivacyContent = {
     "Open Source — du kannst den Code auf GitHub überprüfen",
     "Funktioniert offline, sobald die Seite geladen ist",
   ],
+  faqH2: "Häufig gestellte Fragen",
+  faqs: [
+    {
+      q: "Kann ein Kanal, den ich abonniert habe, sehen, dass ich seine Videos angesehen habe?",
+      a: "Nein. Ersteller können aggregierte, anonymisierte Aufrufzahlen für ihren eigenen Kanal sehen, aber sie können nicht sehen, welche bestimmten Konten ihre Videos angesehen haben, oder eine Ansicht mit deiner Identität verknüpfen.",
+    },
+    {
+      q: "Wird mein YouTube-Verlauf durch das Löschen vollständig von Googles Servern entfernt?",
+      a: "Das Löschen des Verlaufs entfernt ihn aus der Ansicht deines Kontos und aus Funktionen wie Empfehlungen, aber Googles allgemeine Richtlinien zur Datenaufbewahrung und rechtlichen Aufbewahrung (dokumentiert in Googles eigener Datenschutzrichtlinie) können bestimmte Aufzeichnungen für begrenzte Zeit auf ihrer Seite behalten.",
+    },
+    {
+      q: "Wenn ich TubeTrace nutze, weiß YouTube dann, dass ich meinen Verlauf analysiert habe?",
+      a: "Nein. TubeTrace stellt nie eine Verbindung zu deinem YouTube- oder Google-Konto her — es liest nur die Exportdatei, die du bereits heruntergeladen hast, vollständig in deinem Browser. YouTube hat keinerlei Einblick in diesen Vorgang.",
+    },
+  ],
   cta: {
     h2: "Erkunde deinen Verlauf privat",
     desc: "TubeTrace gibt dir vollständige Einblicke in deine Schaugewohnheiten, ohne Daten mit jemandem zu teilen. Exportiere deinen Verlauf von Google Takeout und analysiere ihn sicher.",

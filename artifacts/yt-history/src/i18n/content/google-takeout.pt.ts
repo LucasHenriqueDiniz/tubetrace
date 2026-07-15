@@ -63,6 +63,25 @@ export const googleTakeoutPt: GoogleTakeoutContent = {
     "Picos de atividade e períodos mais ativos",
     "Análise completa sem nenhum dado sair do seu navegador",
   ],
+  faqH2: "Perguntas frequentes",
+  faqs: [
+    {
+      q: "Quanto tempo o Google Takeout leva para preparar minha exportação do YouTube?",
+      a: "Geralmente de alguns minutos a algumas horas, dependendo de quanto histórico você tem. O Google envia um link de download por e-mail assim que o arquivo estiver pronto — não é preciso manter a aba do Takeout aberta esperando.",
+    },
+    {
+      q: "O Google Takeout inclui vídeos que eu curti ou comentei?",
+      a: "Sim, se você selecionar a opção completa 'YouTube e YouTube Music', a exportação pode incluir curtidas, comentários e playlists como arquivos separados. O TubeTrace só lê o watch-history.json/html; os outros arquivos são ignorados.",
+    },
+    {
+      q: "Posso solicitar uma exportação do Takeout mais de uma vez?",
+      a: "Sim, sem limite. Cada exportação é uma cópia atualizada dos seus dados no momento em que foi solicitada, então você pode reexportar quando quiser uma análise atualizada.",
+    },
+    {
+      q: "Meus dados do Google Takeout são compartilhados com alguém?",
+      a: "Não. A exportação é gerada pelo Google exclusivamente para você e entregue por um link de download privado vinculado à sua conta. O TubeTrace também nunca a recebe — o arquivo é lido inteiramente dentro do seu navegador depois que você o baixa.",
+    },
+  ],
   cta: {
     h2: "Analise seus dados do Google Takeout agora",
     desc: "Arraste seu arquivo e descubra tudo sobre seus hábitos no YouTube. Gratuito, privado e sem cadastro.",

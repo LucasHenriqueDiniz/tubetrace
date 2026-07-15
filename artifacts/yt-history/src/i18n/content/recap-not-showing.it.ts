@@ -53,6 +53,21 @@ export const youtubeRecapIt: YoutubeRecapContent = {
     "100% privato — elaborato nel browser",
     "Nessun accesso o account richiesto",
   ],
+  faqH2: "Domande frequenti",
+  faqs: [
+    {
+      q: "YouTube Recap comparirà prima o poi se aspetto e basta?",
+      a: "Possibile — YouTube distribuisce Recap gradualmente e non garantisce una data. Se non vuoi aspettare, TubeTrace ti offre subito lo stesso tipo di informazioni, senza dipendere dai tempi di rilascio di YouTube.",
+    },
+    {
+      q: "Riattivare la mia cronologia risolve Recap retroattivamente?",
+      a: "No. Riattivare la cronologia influisce solo sulla visione futura — non può recuperare i dati di un periodo in cui la cronologia era in pausa o eliminata. TubeTrace ha lo stesso limite, dato che dipende anch'esso dal file di cronologia mantenuto da YouTube stesso.",
+    },
+    {
+      q: "C'è un modo ufficiale per contattare YouTube riguardo a Recap mancante?",
+      a: "YouTube non offre assistenza individuale per l'idoneità a Recap, trattandosi di un rilascio automatizzato basato su criteri, non di una funzione concessa manualmente. Non esiste un ticket di assistenza che lo faccia comparire prima.",
+    },
+  ],
   cta: {
     h2: "Non aspettare YouTube Recap",
     desc: "Ottieni il tuo riepilogo annuale YouTube completo proprio ora — per ogni anno di cui hai la cronologia.",

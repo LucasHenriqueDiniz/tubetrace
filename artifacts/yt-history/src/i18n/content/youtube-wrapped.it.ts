@@ -73,6 +73,21 @@ export const youtubeWrappedIt: YoutubeWrappedContent = {
       desc: "Usa il pulsante Condividi per generare una scheda immagine 1080×1080 con le tue statistiche chiave, perfetta per condividere sui social media.",
     },
   ],
+  faqH2: "Domande frequenti",
+  faqs: [
+    {
+      q: "Posso ottenere uno YouTube Wrapped per un anno specifico, non tutta la mia cronologia?",
+      a: "TubeTrace mostra la tua cronologia completa per impostazione predefinita, ma la heatmap dell'attività e le suddivisioni mensili ti permettono di concentrarti visivamente su un anno o mese specifico all'interno dei tuoi dati.",
+    },
+    {
+      q: "TubeTrace funziona se il Recap di YouTube non è mai apparso sul mio account?",
+      a: "Sì — TubeTrace non dipende affatto dall'idoneità al Recap di YouTube. Finché riesci a esportare un file di Google Takeout con la cronologia di visione, TubeTrace genera il tuo report completo, indipendentemente dal fatto che il Recap sia apparso per te.",
+    },
+    {
+      q: "Il tipo di personalità si basa su un algoritmo reale o è casuale?",
+      a: "Viene calcolato a partire da pattern reali nei tuoi dati — orari di visione, durata delle sessioni, fedeltà ai canali e coerenza tra i giorni — non è casuale. Due persone con abitudini diverse otterranno risultati di personalità diversi.",
+    },
+  ],
   cta: {
     h2: "Crea il tuo YouTube Wrapped ora",
     desc: "Gratuito, privato e funziona con la tua cronologia YouTube completa — non solo l'ultimo anno.",

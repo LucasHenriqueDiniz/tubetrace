@@ -73,6 +73,21 @@ export const youtubePrivacyEn: YoutubePrivacyContent = {
     "Open source — you can verify the code on GitHub",
     "Works offline once the page is loaded",
   ],
+  faqH2: "Frequently asked questions",
+  faqs: [
+    {
+      q: "Can a channel I subscribe to see that I watched their videos?",
+      a: "No. Creators can see aggregate, anonymized view counts and analytics for their own channel, but they cannot see which specific accounts watched their videos or link a view to your identity.",
+    },
+    {
+      q: "Does clearing my YouTube history delete it from Google's servers entirely?",
+      a: "Deleting history removes it from your account view and from features like recommendations, but Google's general data retention and legal-hold policies (documented in Google's own privacy policy) may keep certain records for a limited time on their end.",
+    },
+    {
+      q: "If I use TubeTrace, does YouTube know I analyzed my history?",
+      a: "No. TubeTrace never connects to your YouTube or Google account — it only reads the export file you already downloaded, entirely inside your browser. YouTube has no visibility into that process at all.",
+    },
+  ],
   cta: {
     h2: "Explore your history privately",
     desc: "TubeTrace gives you full visibility into your viewing habits without sharing any data with anyone. Export your history from Google Takeout and analyze it safely.",

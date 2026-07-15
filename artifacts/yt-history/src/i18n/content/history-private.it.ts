@@ -73,6 +73,21 @@ export const youtubePrivacyIt: YoutubePrivacyContent = {
     "Open source — puoi verificare il codice su GitHub",
     "Funziona offline una volta caricata la pagina",
   ],
+  faqH2: "Domande frequenti",
+  faqs: [
+    {
+      q: "Un canale a cui sono iscritto può vedere che ho guardato i suoi video?",
+      a: "No. I creator possono vedere conteggi di visualizzazioni aggregati e anonimi per il proprio canale, ma non possono vedere quali account specifici hanno guardato i loro video né collegare una visualizzazione alla tua identità.",
+    },
+    {
+      q: "Cancellare la mia cronologia YouTube la elimina del tutto dai server di Google?",
+      a: "Cancellare la cronologia la rimuove dalla vista del tuo account e da funzionalità come i consigli, ma le politiche generali di conservazione dei dati e di conservazione legale di Google (documentate nella privacy policy di Google) potrebbero mantenere alcuni record per un periodo limitato dal loro lato.",
+    },
+    {
+      q: "Se uso TubeTrace, YouTube sa che ho analizzato la mia cronologia?",
+      a: "No. TubeTrace non si connette mai al tuo account YouTube o Google — legge solo il file di esportazione che hai già scaricato, interamente all'interno del tuo browser. YouTube non ha alcuna visibilità su questo processo.",
+    },
+  ],
   cta: {
     h2: "Esplora la tua cronologia in modo privato",
     desc: "TubeTrace ti dà piena visibilità sulle tue abitudini di visione senza condividere alcun dato con nessuno. Esporta la tua cronologia da Google Takeout e analizzala in sicurezza.",
