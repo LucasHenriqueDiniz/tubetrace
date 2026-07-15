@@ -82,6 +82,31 @@ const copy = {
     language: "Idioma",
     archiveBadge: "ZIP do Takeout agora funciona",
     waitNote: "Exports grandes podem demorar para ficar prontos no Google.",
+    whyH2: "Por que usar o TubeTrace",
+    whyPara1:
+      "O YouTube mostra seu histórico bruto, mas não te diz nada sobre seus hábitos: quando você mais assiste, quais canais realmente dominam seu tempo, ou se você é do tipo que maratona séries inteiras de madrugada. O TubeTrace pega esse export cru do Google Takeout e transforma em um retrato real do seu jeito de consumir YouTube — algo que nem o próprio YouTube oferece de forma nativa.",
+    whyPara2:
+      "Tudo roda no seu navegador com JavaScript puro: o arquivo nunca é enviado para nenhum servidor, não existe conta, login ou coleta de dados. Isso limita algumas coisas — por exemplo, como o Google não inclui a duração exata de cada vídeo no export, o TubeTrace estima 5 minutos por vídeo para calcular o tempo total assistido, então esse número é uma aproximação, não um valor exato.",
+    howVisibleH2: "Como funciona, passo a passo",
+    homeFaqH2: "Perguntas frequentes",
+    homeFaqs: [
+      {
+        q: "Preciso criar uma conta para usar o TubeTrace?",
+        a: "Não. Não existe login, cadastro ou conta de nenhum tipo. Você só solta o arquivo do Google Takeout na página e o relatório aparece na hora.",
+      },
+      {
+        q: "O TubeTrace funciona sem eu enviar nenhum arquivo?",
+        a: "Sim — use o botão 'Carregar dados demo' para ver o relatório completo com dados sintéticos, ou veja o relatório de exemplo com um histórico real anonimizado, sem precisar exportar nada do Google.",
+      },
+      {
+        q: "Quanto tempo o processamento leva?",
+        a: "Geralmente poucos segundos, mesmo para históricos com anos de dados e dezenas de milhares de vídeos assistidos — tudo acontece localmente no seu navegador, sem depender de um servidor.",
+      },
+      {
+        q: "O TubeTrace é gratuito?",
+        a: "Sim, totalmente gratuito e sem limite de uso. Não há plano pago, período de teste ou funcionalidade bloqueada atrás de pagamento.",
+      },
+    ],
   },
   en: {
     loading: "Opening your export and crunching the numbers...",
@@ -126,6 +151,31 @@ const copy = {
     language: "Language",
     archiveBadge: "Takeout ZIP now works",
     waitNote: "Large exports can take time before Google makes them available.",
+    whyH2: "Why use TubeTrace",
+    whyPara1:
+      "YouTube shows you your raw history, but it doesn't tell you anything about your habits: when you watch the most, which channels actually dominate your time, or whether you're the type who binges entire seasons at 2am. TubeTrace takes that raw Google Takeout export and turns it into a real picture of how you actually watch YouTube — something YouTube itself doesn't offer natively.",
+    whyPara2:
+      "Everything runs in your browser with plain JavaScript: the file is never uploaded to any server, there's no account, no login, no data collection. That does come with limits — for example, since Google doesn't include the exact duration of each video in the export, TubeTrace estimates 5 minutes per video to calculate total watch time, so that number is an approximation, not an exact value.",
+    howVisibleH2: "How it works, step by step",
+    homeFaqH2: "Frequently asked questions",
+    homeFaqs: [
+      {
+        q: "Do I need to create an account to use TubeTrace?",
+        a: "No. There's no login, sign-up, or account of any kind. You just drop your Google Takeout file on the page and your report appears instantly.",
+      },
+      {
+        q: "Does TubeTrace work without me uploading a file?",
+        a: "Yes — use the 'Load Demo Data' button to see the full report with synthetic data, or check out the sample report built from a real, anonymized history, with nothing to export from Google.",
+      },
+      {
+        q: "How long does processing take?",
+        a: "Usually a few seconds, even for histories spanning years with tens of thousands of watched videos — everything happens locally in your browser, with no server involved.",
+      },
+      {
+        q: "Is TubeTrace free?",
+        a: "Yes, completely free with no usage limit. There's no paid plan, trial period, or feature locked behind a paywall.",
+      },
+    ],
   },
 } as const;
 
@@ -381,6 +431,17 @@ export function UploadSection() {
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.35 }}
+        className="mt-16 w-full max-w-2xl mx-auto text-center"
+      >
+        <h2 className="text-2xl font-bold mb-4">{t.whyH2}</h2>
+        <p className="text-muted-foreground leading-relaxed mb-4">{t.whyPara1}</p>
+        <p className="text-muted-foreground leading-relaxed">{t.whyPara2}</p>
+      </motion.section>
+
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
         className="mt-16 w-full"
       >
@@ -393,29 +454,29 @@ export function UploadSection() {
               icon: Sparkles,
               title: locale === "pt-BR" ? "Personalidade de espectador" : "Viewing personality",
               desc: locale === "pt-BR"
-                ? "Descubra seu arquétipo: Coruja Noturna, Maratonista, Fã Leal, Eclético e mais."
-                : "Discover your archetype: Night Owl, Binge Watcher, Loyal Fan, Variety Seeker, and more.",
+                ? "Descubra seu arquétipo: Coruja Noturna, Maratonista, Fã Leal, Eclético e mais. O cálculo usa horários de visualização, duração das sessões e consistência ao longo dos dias — não é um resultado aleatório."
+                : "Discover your archetype: Night Owl, Binge Watcher, Loyal Fan, Variety Seeker, and more. It's calculated from your actual viewing times, session lengths, and consistency across days — not a random result.",
             },
             {
               icon: Users,
               title: locale === "pt-BR" ? "Top canais" : "Top channels",
               desc: locale === "pt-BR"
-                ? "Veja quais canais dominam seu histórico por contagem de vídeos e porcentagem."
-                : "See which channels dominate your history by video count and percentage.",
+                ? "Veja quais canais dominam seu histórico por contagem de vídeos e porcentagem. Útil para descobrir se você é fiel a poucos criadores ou se costuma variar bastante."
+                : "See which channels dominate your history by video count and percentage. Useful for spotting whether you're loyal to a few creators or watch a wide variety.",
             },
             {
               icon: Flame,
               title: locale === "pt-BR" ? "Sessões de maratona" : "Binge sessions",
               desc: locale === "pt-BR"
-                ? "Detecta períodos em que você assistiu 4+ vídeos em sequência rápida."
-                : "Detects periods when you watched 4+ videos in rapid succession.",
+                ? "Detecta períodos em que você assistiu 4+ vídeos em sequência rápida (janela de 45 minutos), incluindo quais canais dominaram cada maratona."
+                : "Detects periods when you watched 4+ videos in rapid succession (a 45-minute window), including which channels dominated each binge.",
             },
             {
               icon: BarChart2,
               title: locale === "pt-BR" ? "Padrões de consumo" : "Watch patterns",
               desc: locale === "pt-BR"
-                ? "Atividade por hora, dia da semana e mês — descubra quando você mais assiste."
-                : "Activity by hour, day of week, and month — find out when you watch the most.",
+                ? "Atividade por hora, dia da semana e mês — descubra quando você mais assiste, com um heatmap no estilo GitHub cobrindo todo o seu histórico."
+                : "Activity by hour, day of week, and month — find out when you watch the most, with a GitHub-style heatmap covering your entire history.",
             },
           ].map(({ icon: Icon, title, desc }) => (
             <div key={title} className="rounded-2xl border border-border/60 bg-card/60 p-5">
@@ -463,6 +524,42 @@ export function UploadSection() {
               <span className="text-primary">→</span>
               {label}
             </Link>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.55 }}
+        className="mt-12 w-full rounded-2xl border border-border/60 bg-card/60 p-6"
+      >
+        <h2 className="text-lg font-bold mb-4">{t.howVisibleH2}</h2>
+        <ol className="grid gap-3 text-sm">
+          {t.steps.map((step, index) => (
+            <li key={step} className="flex gap-3">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                {index + 1}
+              </span>
+              <span className="text-muted-foreground leading-relaxed">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </motion.section>
+
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+        className="mt-12 w-full"
+      >
+        <h2 className="text-lg font-bold mb-4">{t.homeFaqH2}</h2>
+        <div className="space-y-3">
+          {t.homeFaqs.map(({ q, a }) => (
+            <div key={q} className="rounded-2xl border border-border/60 bg-card/60 p-5">
+              <h3 className="font-semibold mb-2 text-sm">{q}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{a}</p>
+            </div>
           ))}
         </div>
       </motion.section>
