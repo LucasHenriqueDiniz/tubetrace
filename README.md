@@ -1,3 +1,7 @@
+<p align="center">
+  <img src=".github/banner.png" alt="TubeTrace" width="100%" />
+</p>
+
 # TubeTrace — YouTube Watch History Analyzer
 
 Analyze your YouTube viewing habits with this **privacy-first** analyzer. Upload your Google Takeout export and get instant insights into your watch patterns, top channels, binge sessions, and viewing personality — all processed **100% locally in your browser**.
